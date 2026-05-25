@@ -1,0 +1,102 @@
+<?php
+/**
+ * Template Name: Catalog
+ * Template for catalog page
+ */
+?>
+
+<?php get_header(); ?>
+
+<!-- Hero Section -->
+<section class="relative bg-black overflow-hidden">
+	<div class="relative h-[500px] md:h-[600px]">
+		<!-- Background Image -->
+		<div class="absolute inset-0 bg-[url('<?php echo get_template_directory_uri(); ?>/img/catalog-hero.png')] bg-cover bg-center"></div>
+		<div class="absolute inset-0 bg-black/60"></div>
+		
+		<!-- Content -->
+		<div class="relative w-full max-w-[1200px] mx-auto h-full my-14 h-full flex items-start mt-[140px]">
+			<div class="flex max-w-[712px] gap-8 w-full items-center">
+				<!-- Left Content -->
+				<div class="text-white w-full max-w-[680px]">
+					<!-- Breadcrumb -->
+					<nav class="flex items-center gap-2 text-sm mb-[60px]">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
+						<svg class="w-4 h-4 text-[#FB8A3C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+						</svg>
+						<span class="text-white">Каталог</span>
+					</nav>
+					
+					<!-- Title -->
+					<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-6 leading-tight w-full">
+						Каталог мототехники, запчастей и аксессуаров
+					</h1>
+					
+					<!-- Description -->
+					<p class="text-gray-300 text-[16px] md:text-[18px] mb-10 leading-relaxed">
+						Подобрать нужную технику, расходники и комплектующие по категориям, брендам и основным параметрам
+					</p>
+					
+					<!-- Button -->
+					<?php
+					motorcycle_shop_lead_modal_trigger(
+						array(
+							'source' => 'catalog',
+							'class'  => 'inline-block flex items-center justify-center bg-[#2A3038] text-white text-center max-h-[48px] px-8 py-4 rounded-[2px] w-full md:max-w-[285px] font-medium hover:bg-[#3C3C3C] transition-colors',
+						)
+					);
+					?>
+				</div>
+				
+				<!-- Right Image -->
+				<div class="hidden md:block absolute right-0 max-w-[30vw]">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/catalog-small.png" alt="Мотоцикл" class="w-full h-auto">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+<section id="popular-cat" class="w-full form py-20 px-[10px] md:px-0">
+  <div class="flex flex-col max-w-[1200px] mx-auto gap-[20px]">
+    <h2 class="text-[28px] md:text-[40px] max-w-[800px] text-white font-bold leading-[1.15]">
+      Основные категории
+    </h2>
+
+    <div class="flex mt-[40px]">
+      <?php
+				$categories = get_terms( array(
+					'taxonomy' => 'product_cat',
+					'hide_empty' => false,
+					'number' => 11,
+				) );
+				if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) :
+				?>
+				<div class="flex-1">
+					<div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+						<?php foreach ( $categories as $cat ) :
+							$thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
+							$image_url = $thumbnail_id ? wp_get_attachment_url( $thumbnail_id ) : get_template_directory_uri() . '/img/placeholder.png';
+						?>
+						<a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="group relative overflow-hidden block">
+							<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $cat->name ); ?>" class="w-full h-[210px] object-cover transition-transform duration-300 group-hover:scale-110">
+							<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+							<div class="absolute bg-[#2A3038]/80 h-[36px] bottom-0 left-0 right-0 p-4 flex items-center justify-between">
+								<span class="text-white text-base font-medium"><?php echo esc_html( $cat->name ); ?></span>
+								<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+							</div>
+						</a>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<?php endif; ?>
+    </div>
+
+  </div>
+</section>
+<?php get_template_part( 'template-parts/home/form', 'form' ); ?>
+
+<?php get_footer(); ?>

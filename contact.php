@@ -1,0 +1,172 @@
+<?php
+/**
+ * Template Name: Contact
+ * Template for Contact page
+ */
+?>
+
+<?php get_header(); ?>
+
+<!-- Hero Section -->
+<section class="relative overflow-hidden">
+	<div class="relative h-[494px]">
+		<!-- Background Image -->
+		<div class="absolute inset-0 bg-[url('<?php echo get_template_directory_uri(); ?>/img/contact-bg.jpeg')] bg-cover bg-right">
+		</div>
+		
+		<!-- Content -->
+		<div class="relative w-full max-w-[1200px] mx-auto h-full my-0 h-full flex items-start">
+			<div class="flex max-w-[712px] gap-8 w-full items-center mt-[140px]">
+				<!-- Left Content -->
+				<div class="text-white w-full max-w-[680px]">
+					<!-- Breadcrumb -->
+					<nav class="flex items-center gap-2 text-sm mb-[60px]">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
+						<svg class="w-4 h-4 text-[#FB8A3C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+						</svg>
+						<span class="text-white">Контакты</span>
+					</nav>
+					
+					<!-- Title -->
+					<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-6 leading-tight w-full">
+						Контакты
+					</h1>
+					
+					<!-- Description -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<?php
+$theme_uri = get_template_directory_uri();
+?>
+
+<!-- Contact Section -->
+<section class="w-full py-10 px-[10px] md:px-0">
+	<div class="flex flex-col max-w-[1200px] mx-auto gap-[20px]">
+		<div class="flex flex-col lg:flex-row gap-[20px]">
+			<!-- Contact info cards -->
+			<div class="grid grid-cols-2 gap-[20px] w-full lg:w-[590px] lg:shrink-0">
+				<!-- Phone -->
+				<div class="bg-[#2A3038] flex flex-col items-center justify-center text-center px-6 py-[40px] min-h-[200px]">
+					<div class="w-[44px] h-[44px] rounded-[2px] bg-[#FF6B00] flex items-center justify-center mb-5">
+						<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+						</svg>
+					</div>
+					<h3 class="text-white text-[18px] font-semibold mb-2">Телефон</h3>
+					<a href="tel:+375293070603" class="text-[#B8C0CC] text-[14px] leading-relaxed hover:text-[#FF6B00] transition-colors">+375 29 307 06 03</a>
+				</div>
+
+				<!-- Email -->
+				<div class="bg-[#2A3038] flex flex-col items-center justify-center text-center px-6 py-[40px] min-h-[200px]">
+					<div class="w-[44px] h-[44px] rounded-[2px] bg-[#FF6B00] flex items-center justify-center mb-5">
+						<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+						</svg>
+					</div>
+					<h3 class="text-white text-[18px] font-semibold mb-2">Email</h3>
+					<a href="mailto:motolavkaby@yandex.by" class="text-[#B8C0CC] text-[14px] leading-relaxed hover:text-[#FF6B00] transition-colors break-all">motolavkaby@yandex.by</a>
+				</div>
+
+				<!-- Hours -->
+				<div class="bg-[#2A3038] flex flex-col items-center justify-center text-center px-6 py-[40px] min-h-[200px]">
+					<div class="w-[44px] h-[44px] rounded-[2px] bg-[#FF6B00] flex items-center justify-center mb-5">
+						<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+						</svg>
+					</div>
+					<h3 class="text-white text-[18px] font-semibold mb-2">Режим работы</h3>
+					<p class="text-[#B8C0CC] text-[14px] leading-relaxed">Пн–Пт с 9:00 до 19:00</p>
+				</div>
+
+				<!-- Address -->
+				<div class="bg-[#2A3038] flex flex-col items-center justify-center text-center px-6 py-[40px] min-h-[200px]">
+					<div class="w-[44px] h-[44px] rounded-[2px] bg-[#FF6B00] flex items-center justify-center mb-5">
+						<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+						</svg>
+					</div>
+					<h3 class="text-white text-[18px] font-semibold mb-2">Адрес</h3>
+					<p class="text-[#B8C0CC] text-[14px] leading-relaxed max-w-[240px]">г. Минск, ул. Руссиянова, д. 3, корп. 1, ком. 326-А/69</p>
+				</div>
+			</div>
+
+			<!-- Contact form -->
+			<div class="relative flex-1 min-h-[420px] overflow-hidden">
+				<div class="absolute inset-0 bg-[url('<?php echo esc_url( $theme_uri ); ?>/img/moto3.png')] bg-cover bg-center"></div>
+				<div class="absolute inset-0 bg-[#171A1F]/75"></div>
+				<form class="relative flex flex-col h-full min-h-[420px] px-8 py-10 md:px-10 md:py-12 justify-center">
+					<h2 class="text-white text-[28px] md:text-[32px] font-bold leading-[1.15] mb-4">
+						Связаться с нами
+					</h2>
+					<p class="text-[#B8C0CC] text-[14px] md:text-[16px] leading-relaxed mb-8 max-w-[480px]">
+						Напишите, что вас интересует, и мы свяжемся с вами в рабочее время.
+					</p>
+
+					<div class="flex flex-col gap-[12px] max-w-[480px] w-full">
+						<input
+							type="text"
+							class="w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+							placeholder="Имя"
+						/>
+
+						<input
+							type="tel"
+							class="w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+							placeholder="Телефон"
+						/>
+
+						<label class="inline-flex items-center gap-3 cursor-pointer mt-1">
+							<input type="checkbox" class="peer sr-only" checked />
+							<span class="relative w-[32px] h-[32px] shrink-0 rounded-[2px] bg-[#FF6B00] flex items-center justify-center hover:brightness-95 transition-[filter] peer-checked:[&_svg]:opacity-100">
+								<svg
+									class="w-6 h-6 text-white opacity-0 transition-opacity duration-150"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="3"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<path d="M20 6L9 17l-5-5" />
+								</svg>
+							</span>
+							<span class="select-none text-[#B8C0CC] text-[12px] md:text-sm leading-[1.4]">
+								Продолжая, вы соглашаетесь с политикой конфиденциальности
+							</span>
+						</label>
+
+						<?php
+						motorcycle_shop_lead_modal_trigger(
+							array(
+								'text'   => 'Отправить заявку',
+								'source' => 'contact',
+								'class'  => 'flex w-full max-h-[52px] mt-5 items-center justify-center rounded-[2px] bg-[#FF6B00] text-[#F5F7FA] px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors',
+							)
+						);
+						?>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- Map -->
+		<div class="w-full h-[320px] md:h-[400px] overflow-hidden">
+			<iframe
+				src="https://yandex.ru/map-widget/v1/?ll=27.601611%2C53.917194&amp;z=12&amp;pt=27.601611%2C53.917194%2Cpm2rdm&amp;l=map"
+				class="w-full h-full border-0"
+				allowfullscreen
+				loading="lazy"
+				title="Карта — г. Минск, ул. Руссиянова, д. 3"
+			></iframe>
+		</div>
+	</div>
+</section>
+
+<?php get_footer(); ?>
