@@ -50,7 +50,7 @@ $cart_count = WC()->cart->get_cart_contents_count();
 	<div class="wc-proceed-to-checkout flex flex-col gap-3 mb-6">
 		<a
 			href="<?php echo esc_url( wc_get_checkout_url() ); ?>"
-			class="flex w-full h-[52px] items-center justify-center rounded-[2px] bg-[#FF6B00] pb-[20px] text-white text-base font-semibold hover:bg-[#E55A00] transition-colors checkout-button"
+			class="flex w-full h-[52px] items-center justify-center rounded-[2px] bg-[#FF6B00] text-white text-base font-semibold hover:bg-[#E55A00] transition-colors checkout-button"
 		>
 			Оформить заказ
 		</a>

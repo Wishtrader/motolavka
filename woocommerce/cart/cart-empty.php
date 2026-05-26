@@ -13,7 +13,7 @@ do_action( 'woocommerce_cart_is_empty' );
 
 <div class="w-full px-[10px] md:px-0 pt-[110px] md:pt-[130px] pb-16">
 	<div class="max-w-[1200px] mx-auto">
-		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
+		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6 mt-[65px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
 			<svg class="w-4 h-4 text-[#FB8A3C] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -28,7 +28,7 @@ do_action( 'woocommerce_cart_is_empty' );
 			<p class="text-[#B8C0CC] text-base mb-8">Добавьте товары из каталога, чтобы оформить заказ.</p>
 			<a
 				href="<?php echo esc_url( motorcycle_shop_page_url( 'catalog.php', 'catalog' ) ); ?>"
-				class="inline-flex items-center justify-center min-h-[52px] px-8 pb-4 rounded-[2px] bg-[#FF6B00] text-white text-base font-semibold text-center leading-none whitespace-nowrap hover:bg-[#E55A00] transition-colors"
+				class="inline-flex items-center justify-center min-h-[52px] px-8 rounded-[2px] bg-[#FF6B00] text-white text-base font-semibold text-center leading-none whitespace-nowrap hover:bg-[#E55A00] transition-colors"
 			>
 				<?php esc_html_e( 'Перейти в каталог', 'motorcycle-shop' ); ?>
 			</a>

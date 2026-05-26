@@ -21,8 +21,11 @@ if ( ! $product->is_in_stock() ) {
 	return;
 }
 
-$min_qty = $product->get_min_purchase_quantity();
-$max_qty = $product->get_max_purchase_quantity();
+$min_qty    = max( 1, (int) $product->get_min_purchase_quantity() );
+$max_qty    = $product->get_max_purchase_quantity();
+$cart_action = function_exists( 'motorcycle_shop_cart_page_url' )
+	? motorcycle_shop_cart_page_url( '' )
+	: wc_get_cart_url();
 ?>
 
 <?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
@@ -31,7 +34,7 @@ $max_qty = $product->get_max_purchase_quantity();
 	class="cart flex flex-col gap-4"
 	method="post"
 	enctype="multipart/form-data"
-	action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>"
+	action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $cart_action ) ); ?>"
 >
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
@@ -65,13 +68,13 @@ $max_qty = $product->get_max_purchase_quantity();
 		</div>
 
 		<button
-			type="button"
+			type="submit"
 			name="add-to-cart"
 			value="<?php echo esc_attr( $product->get_id() ); ?>"
 			data-product_id="<?php echo esc_attr( $product->get_id() ); ?>"
 			data-product_sku="<?php echo esc_attr( $product->get_sku() ); ?>"
-			data-quantity="1"
-			class="single_add_to_cart_button add_to_cart_button ajax_add_to_cart product_type_<?php echo esc_attr( $product->get_type() ); ?> flex-1 min-h-[52px] flex items-center justify-center rounded-[2px] bg-[#FF6B00] text-white text-base font-semibold hover:bg-[#E55A00] transition-colors"
+			data-quantity="<?php echo esc_attr( $min_qty ); ?>"
+			class="single_add_to_cart_button add_to_cart_button product_type_<?php echo esc_attr( $product->get_type() ); ?> flex-1 min-h-[52px] flex items-center justify-center rounded-[2px] bg-[#FF6B00] text-white text-base font-semibold hover:bg-[#E55A00] transition-colors"
 		>
 			<?php echo esc_html( $product->single_add_to_cart_text() ); ?>
 		</button>

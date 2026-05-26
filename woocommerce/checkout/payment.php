@@ -15,19 +15,19 @@ if ( ! wp_doing_ajax() ) {
 ?>
 
 <div id="payment" class="woocommerce-checkout-payment">
-	<?php if ( WC()->cart && WC()->cart->needs_payment() ) : ?>
+	<?php if ( WC()->cart && WC()->cart->needs_payment() && ! empty( $available_gateways ) ) : ?>
 		<ul class="wc_payment_methods payment_methods methods">
 			<?php
-			if ( ! empty( $available_gateways ) ) {
-				foreach ( $available_gateways as $gateway ) {
-					wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
-				}
+			foreach ( $available_gateways as $gateway ) {
+				wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
 			}
 			?>
 		</ul>
+	<?php else : ?>
+		<input type="hidden" name="payment_method" value="motorcycle_confirm" />
 	<?php endif; ?>
 
-	<div class="form-row place-order flex flex-col gap-4">
+	<div class="form-row place-order flex flex-col gap-4 mt-2">
 		<noscript>
 			<button type="submit" class="hidden" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
 		</noscript>
@@ -54,8 +54,8 @@ if ( ! wp_doing_ajax() ) {
 
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
-		<p class="text-[#B8C0CC] text-xs md:text-sm leading-relaxed text-center">
-			После оформления заказа менеджер свяжется с вами для подтверждения наличия, комплектации и согласования способа оплаты.
+		<p class="text-white/90 text-xs md:text-sm leading-relaxed text-center">
+			После отправки заказа мы свяжемся с вами для подтверждения наличия и деталей получения. Оплата производится после подтверждения.
 		</p>
 
 		<?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>

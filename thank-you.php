@@ -1,16 +1,35 @@
 <?php
 /**
  * Template Name: Thank You
- * Thank-you page after lead form submission.
+ * Thank-you page after checkout or lead form submission.
  *
  * @package motorcycle-shop
  */
 
 get_header();
 
-$theme_uri    = get_template_directory_uri();
-$catalog_url  = motorcycle_shop_page_url( 'catalog.php', 'catalog' );
-$bg_url       = $theme_uri . '/img/thank-you-bg.png';
+$theme_uri   = get_template_directory_uri();
+$catalog_url = motorcycle_shop_page_url( 'catalog.php', 'catalog' );
+$bg_url      = $theme_uri . '/img/thank-you-bg.png';
+
+$order_id = isset( $_GET['order_id'] ) ? absint( $_GET['order_id'] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$order_key = isset( $_GET['key'] ) ? wc_clean( wp_unslash( $_GET['key'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+$order     = null;
+
+if ( $order_id && $order_key && function_exists( 'wc_get_order' ) ) {
+	$maybe_order = wc_get_order( $order_id );
+	if ( $maybe_order && hash_equals( $maybe_order->get_order_key(), $order_key ) ) {
+		$order = $maybe_order;
+	}
+}
+
+$title = $order
+	? sprintf( 'Заказ №%s оформлен', $order->get_order_number() )
+	: 'Заказ отправлен';
+
+$message = $order
+	? 'Спасибо! Мы получили ваш заказ и отправили подтверждение на e-mail. Менеджер свяжется с вами для уточнения наличия и деталей получения.'
+	: 'Спасибо! Ваша заявка принята. Менеджер свяжется с вами в рабочее время для подтверждения заказа.';
 ?>
 
 <section class="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden">
@@ -20,10 +39,10 @@ $bg_url       = $theme_uri . '/img/thank-you-bg.png';
 	<div class="relative w-full max-w-[1200px] mx-auto px-[10px] md:px-0 py-[140px] md:py-[160px]">
 		<div class="max-w-[720px] mx-auto text-center">
 			<h1 class="text-white text-[32px] md:text-[48px] font-bold leading-tight mb-6">
-				Заказ отправлен
+				<?php echo esc_html( $title ); ?>
 			</h1>
 			<p class="text-white text-base md:text-lg leading-relaxed mb-10 md:mb-12 max-w-[600px] mx-auto">
-				Спасибо! Ваша заявка принята. Менеджер свяжется с вами в рабочее время для подтверждения заказа.
+				<?php echo esc_html( $message ); ?>
 			</p>
 			<a
 				href="<?php echo esc_url( $catalog_url ); ?>"

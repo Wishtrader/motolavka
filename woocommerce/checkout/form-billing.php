@@ -50,4 +50,5 @@ if ( $comment_field ) {
 
 	<input type="hidden" name="billing_country" value="BY" />
 	<input type="hidden" name="billing_postcode" value="000000" />
+	<input type="hidden" name="billing_last_name" id="billing_last_name" value="" />
 </section>

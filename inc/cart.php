@@ -8,6 +8,135 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Use classic PHP cart/checkout (not WooCommerce Blocks / Store API).
+ *
+ * @return bool
+ */
+function motorcycle_shop_use_classic_wc_cart() {
+	return false;
+}
+add_filter( 'woocommerce_should_load_cart_and_checkout_blocks', 'motorcycle_shop_use_classic_wc_cart' );
+
+/**
+ * Session cookies on HTTP local installs (not only HTTPS).
+ *
+ * @param bool $secure Whether cookie is secure.
+ * @return bool
+ */
+function motorcycle_shop_wc_session_secure_cookie( $secure ) {
+	return is_ssl();
+}
+add_filter( 'wc_session_use_secure_cookie', 'motorcycle_shop_wc_session_secure_cookie' );
+
+/**
+ * Create or repair WooCommerce system pages (cart must not equal checkout).
+ *
+ * @param string $option_key WC page option key (cart|checkout).
+ * @param string $title      Page title.
+ * @param string $slug       Page slug.
+ * @param string $shortcode  Page shortcode content.
+ * @return int Page ID or 0.
+ */
+function motorcycle_shop_ensure_wc_system_page( $option_key, $title, $slug, $shortcode ) {
+	$page_id = (int) wc_get_page_id( $option_key );
+
+	if ( $page_id > 0 && 'publish' === get_post_status( $page_id ) ) {
+		$content = get_post_field( 'post_content', $page_id );
+		if ( false === strpos( $content, $shortcode ) ) {
+			wp_update_post(
+				array(
+					'ID'           => $page_id,
+					'post_content' => $shortcode,
+				)
+			);
+		}
+		return $page_id;
+	}
+
+	$page = get_page_by_path( $slug );
+	if ( $page && 'publish' === $page->post_status ) {
+		$page_id = (int) $page->ID;
+		update_option( 'woocommerce_' . $option_key . '_page_id', $page_id );
+		if ( false === strpos( (string) $page->post_content, $shortcode ) ) {
+			wp_update_post(
+				array(
+					'ID'           => $page_id,
+					'post_content' => $shortcode,
+				)
+			);
+		}
+		return $page_id;
+	}
+
+	$page_id = (int) wp_insert_post(
+		array(
+			'post_title'   => $title,
+			'post_name'    => $slug,
+			'post_status'  => 'publish',
+			'post_type'    => 'page',
+			'post_content' => $shortcode,
+		),
+		true
+	);
+
+	if ( $page_id > 0 && ! is_wp_error( $page_id ) ) {
+		update_option( 'woocommerce_' . $option_key . '_page_id', $page_id );
+	}
+
+	return $page_id > 0 ? $page_id : 0;
+}
+
+/**
+ * Ensure cart and checkout are separate pages with classic shortcodes.
+ */
+function motorcycle_shop_ensure_wc_store_pages() {
+	if ( wp_installing() || ! class_exists( 'WooCommerce' ) ) {
+		return;
+	}
+
+	static $done = false;
+	if ( $done ) {
+		return;
+	}
+	$done = true;
+
+	$cart_id     = motorcycle_shop_ensure_wc_system_page( 'cart', 'Корзина', 'cart', '[woocommerce_cart]' );
+	$checkout_id = motorcycle_shop_ensure_wc_system_page( 'checkout', 'Оформление заказа', 'checkout', '[woocommerce_checkout]' );
+
+	if ( $cart_id && $checkout_id && $cart_id === $checkout_id ) {
+		$checkout_id = (int) wp_insert_post(
+			array(
+				'post_title'   => 'Оформление заказа',
+				'post_name'    => 'checkout',
+				'post_status'  => 'publish',
+				'post_type'    => 'page',
+				'post_content' => '[woocommerce_checkout]',
+			),
+			true
+		);
+		if ( $checkout_id > 0 && ! is_wp_error( $checkout_id ) ) {
+			update_option( 'woocommerce_checkout_page_id', $checkout_id );
+		}
+	}
+}
+add_action( 'woocommerce_init', 'motorcycle_shop_ensure_wc_store_pages', 5 );
+
+/**
+ * Cart page permalink (never fall back to checkout URL).
+ *
+ * @param string $url Default URL.
+ * @return string
+ */
+function motorcycle_shop_cart_page_url( $url ) {
+	$cart_id = (int) wc_get_page_id( 'cart' );
+	if ( $cart_id > 0 && 'publish' === get_post_status( $cart_id ) ) {
+		return (string) get_permalink( $cart_id );
+	}
+	return home_url( '/cart/' );
+}
+add_filter( 'woocommerce_get_cart_url', 'motorcycle_shop_cart_page_url' );
+
+/**
  * Cart page: use classic shortcode so theme template woocommerce/cart/cart.php loads.
  * Modern WC pages often contain the "Cart" block instead of [woocommerce_cart] text.
  *
@@ -27,9 +156,187 @@ function motorcycle_shop_cart_page_content( $content ) {
 		return $content;
 	}
 
+	// Cart block (Gutenberg) does not use the theme cart template — force classic shortcode.
+	if ( function_exists( 'has_block' ) && has_block( 'woocommerce/cart', $content ) ) {
+		return do_shortcode( '[woocommerce_cart]' );
+	}
+
 	return do_shortcode( '[woocommerce_cart]' );
 }
+
+/**
+ * Recalculate cart totals before rendering the cart page.
+ */
+function motorcycle_shop_cart_calculate_totals() {
+	if ( is_cart() && WC()->cart ) {
+		WC()->cart->calculate_totals();
+	}
+}
+add_action( 'wp', 'motorcycle_shop_cart_calculate_totals', 15 );
 add_filter( 'the_content', 'motorcycle_shop_cart_page_content', 5 );
+
+/**
+ * Ensure AJAX add to cart is enabled in WooCommerce settings.
+ */
+function motorcycle_shop_enable_ajax_add_to_cart() {
+	if ( 'yes' !== get_option( 'woocommerce_enable_ajax_add_to_cart' ) ) {
+		update_option( 'woocommerce_enable_ajax_add_to_cart', 'yes' );
+	}
+}
+add_action( 'init', 'motorcycle_shop_enable_ajax_add_to_cart', 6 );
+
+/**
+ * Always redirect to cart after adding a product.
+ */
+function motorcycle_shop_enable_cart_redirect_after_add() {
+	if ( 'yes' !== get_option( 'woocommerce_cart_redirect_after_add' ) ) {
+		update_option( 'woocommerce_cart_redirect_after_add', 'yes' );
+	}
+}
+add_action( 'init', 'motorcycle_shop_enable_cart_redirect_after_add', 6 );
+
+/**
+ * Force WooCommerce session cookie and cart persistence.
+ */
+function motorcycle_shop_cart_force_session() {
+	if ( ! class_exists( 'WooCommerce' ) || ! WC()->cart || ! WC()->session ) {
+		return;
+	}
+
+	if ( ! WC()->session->has_session() ) {
+		WC()->session->set_customer_session_cookie( true );
+	}
+
+	if ( ! WC()->cart->is_empty() ) {
+		WC()->cart->calculate_totals();
+		WC()->cart->set_session();
+		WC()->cart->maybe_set_cart_cookies();
+	}
+}
+
+/**
+ * After adding to cart, redirect to the cart page (classic form submit).
+ *
+ * @param string $url Default redirect URL.
+ * @return string
+ */
+function motorcycle_shop_add_to_cart_redirect( $url ) {
+	if ( wp_doing_ajax() ) {
+		return $url;
+	}
+
+	return motorcycle_shop_cart_page_url( $url );
+}
+add_filter( 'woocommerce_add_to_cart_redirect', 'motorcycle_shop_add_to_cart_redirect' );
+
+/**
+ * Start guest session when cart cookies exist but session was not loaded.
+ */
+function motorcycle_shop_wc_restore_guest_session() {
+	if ( is_admin() && ! wp_doing_ajax() ) {
+		return;
+	}
+
+	if ( ! class_exists( 'WooCommerce' ) || ! WC()->session || ! WC()->cart ) {
+		return;
+	}
+
+	if ( WC()->session->has_session() ) {
+		return;
+	}
+
+	$has_cart_cookie = isset( $_COOKIE['woocommerce_items_in_cart'] ) && '1' === $_COOKIE['woocommerce_items_in_cart']; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated
+
+	if ( $has_cart_cookie ) {
+		WC()->session->set_customer_session_cookie( true );
+	}
+}
+add_action( 'woocommerce_init', 'motorcycle_shop_wc_restore_guest_session', 5 );
+
+/**
+ * Persist cart session immediately after add to cart.
+ *
+ * @param string $cart_item_key Cart item key.
+ */
+function motorcycle_shop_cart_set_session_after_add( $cart_item_key ) {
+	motorcycle_shop_cart_force_session();
+}
+add_action( 'woocommerce_add_to_cart', 'motorcycle_shop_cart_set_session_after_add', 99 );
+
+/**
+ * Backup add-to-cart handler (runs after WC_Form_Handler on wp_loaded:20).
+ */
+function motorcycle_shop_backup_add_to_cart_handler() {
+	if ( is_admin() || wp_doing_ajax() ) {
+		return;
+	}
+
+	if ( empty( $_REQUEST['add-to-cart'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		return;
+	}
+
+	if ( ! class_exists( 'WooCommerce' ) || ! WC()->cart ) {
+		return;
+	}
+
+	$product_id = absint( wp_unslash( $_REQUEST['add-to-cart'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	if ( $product_id <= 0 ) {
+		return;
+	}
+
+	if ( ! WC()->cart->is_empty() ) {
+		motorcycle_shop_cart_force_session();
+		if ( ! headers_sent() ) {
+			wp_safe_redirect( motorcycle_shop_cart_page_url( '' ) );
+			exit;
+		}
+		return;
+	}
+
+	$product = wc_get_product( $product_id );
+	if ( ! $product || ! $product->is_purchasable() || ! $product->is_in_stock() ) {
+		return;
+	}
+
+	$quantity = isset( $_REQUEST['quantity'] ) ? wc_stock_amount( wp_unslash( $_REQUEST['quantity'] ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+	$quantity = max( 1, (int) $quantity );
+
+	$added = WC()->cart->add_to_cart( $product_id, $quantity );
+
+	if ( $added ) {
+		motorcycle_shop_cart_force_session();
+		wc_add_to_cart_message( array( $product_id => $quantity ), true );
+	}
+
+	if ( ! headers_sent() ) {
+		wp_safe_redirect( motorcycle_shop_cart_page_url( '' ) );
+		exit;
+	}
+}
+add_action( 'wp_loaded', 'motorcycle_shop_backup_add_to_cart_handler', 25 );
+
+/**
+ * Use theme woocommerce.php wrapper for cart/checkout/account pages.
+ *
+ * @param string $template Path to template.
+ * @return string
+ */
+function motorcycle_shop_woocommerce_page_template( $template ) {
+	if ( ! class_exists( 'WooCommerce' ) ) {
+		return $template;
+	}
+
+	if ( is_cart() || is_checkout() || is_account_page() ) {
+		$wc_template = locate_template( 'woocommerce.php' );
+
+		if ( $wc_template ) {
+			return $wc_template;
+		}
+	}
+
+	return $template;
+}
+add_filter( 'template_include', 'motorcycle_shop_woocommerce_page_template', 20 );
 
 /**
  * Enqueue WooCommerce cart scripts site-wide.
@@ -42,23 +349,13 @@ function motorcycle_shop_cart_scripts() {
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'wc-cart-fragments' );
 
-	if ( is_product() ) {
-		wp_enqueue_script( 'wc-add-to-cart' );
-	}
-
 	$cart_js = get_template_directory() . '/js/cart.js';
 
 	if ( file_exists( $cart_js ) ) {
-		$cart_deps = array( 'jquery', 'wc-cart-fragments' );
-
-		if ( is_product() ) {
-			$cart_deps[] = 'wc-add-to-cart';
-		}
-
 		wp_enqueue_script(
 			'motorcycle-shop-cart',
 			get_template_directory_uri() . '/js/cart.js',
-			$cart_deps,
+			array( 'jquery', 'wc-cart-fragments' ),
 			(string) filemtime( $cart_js ),
 			true
 		);
@@ -67,7 +364,7 @@ function motorcycle_shop_cart_scripts() {
 			'motorcycle-shop-cart',
 			'motorcycleShopCart',
 			array(
-				'cartUrl'      => wc_get_cart_url(),
+				'cartUrl'      => motorcycle_shop_cart_page_url( '' ),
 				'checkoutUrl'  => wc_get_checkout_url(),
 				'wcAjaxUrl'    => WC_AJAX::get_endpoint( '%%endpoint%%' ),
 				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),

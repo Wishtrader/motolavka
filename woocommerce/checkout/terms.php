@@ -26,7 +26,8 @@ do_action( 'woocommerce_checkout_before_terms_and_conditions' );
 					class="peer sr-only"
 					name="terms"
 					id="terms"
-					<?php checked( apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) ), true ); // phpcs:ignore WordPress.Security.NonceVerification.Missing ?>
+					value="1"
+					checked="checked"
 				/>
 				<span class="relative w-[32px] h-[32px] shrink-0 rounded-[2px] bg-[#FF6B00] flex items-center justify-center hover:brightness-95 transition-[filter] peer-checked:[&_svg]:opacity-100">
 					<svg
@@ -42,13 +43,15 @@ do_action( 'woocommerce_checkout_before_terms_and_conditions' );
 						<path d="M20 6L9 17l-5-5" />
 					</svg>
 				</span>
-				<span class="select-none text-[#B8C0CC] text-xs md:text-sm leading-[1.4] pt-1">
+				<span class="select-none text-white text-xs md:text-sm leading-[1.4] pt-1">
 					<?php wc_terms_and_conditions_checkbox_text(); ?>
 				</span>
 			</label>
 			<input type="hidden" name="terms-field" value="1" />
 		</p>
 	<?php else : ?>
+		<input type="hidden" name="terms" value="1" />
+		<input type="hidden" name="terms-field" value="1" />
 		<label class="inline-flex items-start gap-3 cursor-pointer">
 			<input type="checkbox" class="peer sr-only" checked disabled />
 			<span class="relative w-[32px] h-[32px] shrink-0 rounded-[2px] bg-[#FF6B00] flex items-center justify-center">
@@ -65,7 +68,7 @@ do_action( 'woocommerce_checkout_before_terms_and_conditions' );
 					<path d="M20 6L9 17l-5-5" />
 				</svg>
 			</span>
-			<span class="select-none text-[#B8C0CC] text-xs md:text-sm leading-[1.4] pt-1">
+			<span class="select-none text-white text-xs md:text-sm leading-[1.4] pt-1">
 				Продолжая, вы соглашаетесь с политикой конфиденциальности
 			</span>
 		</label>

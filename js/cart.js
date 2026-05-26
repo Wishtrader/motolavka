@@ -1,4 +1,4 @@
-/* global jQuery, motorcycleShopCart, wc_add_to_cart_params */
+/* global jQuery, motorcycleShopCart */
 (function ($) {
   'use strict';
 
@@ -132,7 +132,7 @@
         if (!input) {
           return;
         }
-        var min = parseInt(input.getAttribute('min') || '0', 10);
+        var min = parseInt(input.getAttribute('min') || '1', 10);
         input.value = String(Math.max(min, parseInt(input.value || '1', 10) - 1));
         scheduleCartUpdate();
       };
@@ -167,7 +167,13 @@
     $('form.cart .added_to_cart').remove();
   }
 
-  $(document.body).on('added_to_cart', function (event, fragments, hash, $button) {
+  function syncAddToCartQuantity($button) {
+    var $form = $button.closest('form.cart');
+    var qty = $form.find('[data-qty-input]').val() || 1;
+    $button.attr('data-quantity', qty);
+  }
+
+  $(document.body).on('added_to_cart', function (event, fragments) {
     if (fragments) {
       $.each(fragments, function (key, value) {
         $(key).replaceWith(value);
@@ -196,10 +202,8 @@
   $(function () {
     bindCartPageEvents();
 
-    $('form.cart').on('click', '.ajax_add_to_cart', function () {
-      var $form = $(this).closest('form.cart');
-      var qty = $form.find('[data-qty-input]').val() || 1;
-      $(this).attr('data-quantity', qty);
+    $('form.cart').on('click', '.single_add_to_cart_button', function () {
+      syncAddToCartQuantity($(this));
     });
   });
 })(jQuery);

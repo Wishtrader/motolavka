@@ -39,7 +39,7 @@
 	}
 
 	function toggleAddressFields( $root, isDelivery ) {
-		var $deliveryFields = $root.find( '[data-delivery-address-fields]' );
+		var $deliveryFields = $root.find( '[data-delivery-field]' );
 		var $pickupFields = $root.find( '[data-pickup-address-fields]' );
 
 		$deliveryFields.toggleClass( 'hidden', ! isDelivery );
@@ -90,14 +90,36 @@
 		setActiveOption( $( this ).closest( '[data-checkout-delivery]' ), type );
 	} );
 
+	function syncBillingLastName() {
+		var $first = $( '#billing_first_name' );
+		var $last = $( '#billing_last_name' );
+
+		if ( $first.length && $last.length && $first.val() ) {
+			$last.val( $first.val() );
+		}
+	}
+
+	$( 'form.checkout' ).on( 'checkout_place_order checkout_place_order_ajax', function () {
+		syncBillingLastName();
+		return true;
+	} );
+
+	$( 'form.checkout' ).on( 'submit', function () {
+		syncBillingLastName();
+	} );
+
+	$( document.body ).on( 'click', '#place_order', function () {
+		syncBillingLastName();
+	} );
+
 	$( function () {
 		var $root = $( '[data-checkout-delivery]' );
 
-		if ( ! $root.length ) {
-			return;
+		if ( $root.length ) {
+			var initial = $root.find( '[data-delivery-type-input]' ).val() || 'pickup';
+			setActiveOption( $root, initial );
 		}
 
-		var initial = $root.find( '[data-delivery-type-input]' ).val() || 'pickup';
-		setActiveOption( $root, initial );
+		syncBillingLastName();
 	} );
 }( jQuery ) );
