@@ -128,7 +128,7 @@
 					<p class="text-[#B8C0CC] text-[14px] md:text-[16px] mb-4 md:mb-6 leading-[1.5]">
 						Свяжитесь с нами — подскажем по оплате, наличию и получению товара.
 					</p>
-					<a href="#" class="inline-block bg-[#FF6B00] text-white font-semibold px-4 md:px-8 py-3 md:py-4 rounded-none hover:bg-[#FB8A3C] transition-colors w-full">
+					<a href="/contact" class="inline-block bg-[#FF6B00] text-white font-semibold px-4 md:px-8 py-3 md:py-4 rounded-none hover:bg-[#FB8A3C] transition-colors w-full">
 						Связаться с нами
 					</a>
 				</div>

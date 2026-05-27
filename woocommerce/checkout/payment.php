@@ -46,6 +46,7 @@ if ( ! wp_doing_ajax() ) {
 		<?php
 		motorcycle_shop_lead_modal_trigger(
 			array(
+				'text'   => 'Получить консультацию',
 				'source' => 'checkout',
 				'class'  => 'flex w-full min-h-[52px] items-center justify-center rounded-[2px] bg-transparent text-white text-base font-semibold border border-[#434C58] hover:bg-[#1F242B] transition-colors',
 			)

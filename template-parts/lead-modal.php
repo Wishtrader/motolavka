@@ -109,7 +109,7 @@ $lead_error_message = ( $lead_error && ! $is_inline_error ) ? motorcycle_shop_le
 
 					<button
 						type="submit"
-						class="flex w-full mt-3 items-center justify-center rounded-[2px] bg-[#FF6B00] text-white px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors"
+						class="flex w-full mt-3 items-center justify-center rounded-[2px] bg-[#FF6B00] text-white px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						Отправить заявку
 					</button>
