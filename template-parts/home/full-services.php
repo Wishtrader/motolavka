@@ -1,9 +1,9 @@
 <?php
 $cards = [
-  ['img' => get_template_directory_uri() . '/img/s1.svg', 'title' => 'Подбор техники', 'description' => 'Поможем подобрать мотоцикл, квадроцикл или скутер под ваш опыт, задачи и бюджет.'],
-  ['img' => get_template_directory_uri() . '/img/s2.svg', 'title' => 'Запчасти и аксессуары', 'description' => 'Подберём нужные комплектующие, расходники и экипировку для вашей техники.'],
-  ['img' => get_template_directory_uri() . '/img/s3.svg', 'title' => 'Собственный сервис', 'description' => 'Обслуживание, диагностика и помощь после покупки в одном месте.'],
-  ['img' => get_template_directory_uri() . '/img/s4.svg', 'title' => 'Доставка по Беларуси', 'description' => 'Обсуждаем удобный вариант получения и организуем доставку по РБ.'],
+  ['img' => get_field('icon_1'), 'title' => get_field('title_1'), 'description' => get_field('description_1')],
+  ['img' => get_field('icon_2'), 'title' => get_field('title_2'), 'description' => get_field('description_2')],
+  ['img' => get_field('icon_3'), 'title' => get_field('title_3'), 'description' => get_field('description_3')],
+  ['img' => get_field('icon_4'), 'title' => get_field('title_4'), 'description' => get_field('description_4')],
 ];
 ?>
 
@@ -14,7 +14,7 @@ $cards = [
     </h2>
 
     <p class="text-[#F5F7FA] max-w-[800px] text-[16px] md:text-[18px] leading-relaxed font-normal">
-      <?php the_field('service_title') ?>
+    <?php the_field('service_title') ?>
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px] mt-10">

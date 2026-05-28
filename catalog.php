@@ -18,7 +18,7 @@
 		<div class="relative w-full max-w-[1200px] mx-auto h-full my-14 h-full flex items-start mt-[140px]">
 			<div class="flex max-w-[712px] gap-8 w-full items-center">
 				<!-- Left Content -->
-				<div class="text-white w-full max-w-[680px]">
+				<div class="text-white w-full max-w-[680px] relative z-10">
 					<!-- Breadcrumb -->
 					<nav class="flex items-center gap-2 text-sm mb-[60px]">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
@@ -97,6 +97,6 @@
 
   </div>
 </section>
-<?php get_template_part( 'template-parts/home/form', 'form' ); ?>
+<?php get_template_part( 'template-parts/catalog/form', 'form' ); ?>
 
 <?php get_footer(); ?>

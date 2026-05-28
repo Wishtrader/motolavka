@@ -58,7 +58,7 @@ $theme_uri = get_template_directory_uri();
 						</svg>
 					</div>
 					<h3 class="text-white text-[18px] font-semibold mb-2">Телефон</h3>
-					<a href="tel:+375293070603" class="text-[#B8C0CC] text-[14px] leading-relaxed hover:text-[#FF6B00] transition-colors">+375 29 307 06 03</a>
+					<a href="tel:<?php the_field('phone') ?>" class="text-[#B8C0CC] text-[14px] leading-relaxed hover:text-[#FF6B00] transition-colors"><?php the_field('phone') ?></a>
 				</div>
 
 				<!-- Email -->
@@ -69,7 +69,7 @@ $theme_uri = get_template_directory_uri();
 						</svg>
 					</div>
 					<h3 class="text-white text-[18px] font-semibold mb-2">Email</h3>
-					<a href="mailto:motolavkaby@yandex.by" class="text-[#B8C0CC] text-[14px] leading-relaxed hover:text-[#FF6B00] transition-colors break-all">motolavkaby@yandex.by</a>
+					<a href="mailto:<?php the_field('email') ?>" class="text-[#B8C0CC] text-[14px] leading-relaxed hover:text-[#FF6B00] transition-colors break-all"><?php the_field('email') ?></a>
 				</div>
 
 				<!-- Hours -->
@@ -80,7 +80,7 @@ $theme_uri = get_template_directory_uri();
 						</svg>
 					</div>
 					<h3 class="text-white text-[18px] font-semibold mb-2">Режим работы</h3>
-					<p class="text-[#B8C0CC] text-[14px] leading-relaxed">Пн–Пт с 9:00 до 19:00</p>
+					<p class="text-[#B8C0CC] text-[14px] leading-relaxed"><?php the_field('worktime') ?></p>
 				</div>
 
 				<!-- Address -->
@@ -92,7 +92,7 @@ $theme_uri = get_template_directory_uri();
 						</svg>
 					</div>
 					<h3 class="text-white text-[18px] font-semibold mb-2">Адрес</h3>
-					<p class="text-[#B8C0CC] text-[14px] leading-relaxed max-w-[240px]">г. Минск, ул. Руссиянова, д. 3, корп. 1, ком. 326-А/69</p>
+					<p class="text-[#B8C0CC] text-[14px] leading-relaxed max-w-[240px]"><?php the_field('address')?></p>
 				</div>
 			</div>
 
@@ -214,11 +214,11 @@ $theme_uri = get_template_directory_uri();
 		<!-- Map -->
 		<div class="w-full h-[320px] md:h-[400px] overflow-hidden">
 			<iframe
-				src="https://yandex.ru/map-widget/v1/?ll=27.601611%2C53.917194&amp;z=12&amp;pt=27.601611%2C53.917194%2Cpm2rdm&amp;l=map"
+				src="https://yandex.ru/map-widget/v1/?ll=27.483255%2C53.884906&amp;z=16&amp;pt=27.483255%2C53.884906%2Cpm2rdm&amp;l=map"
 				class="w-full h-full border-0"
 				allowfullscreen
 				loading="lazy"
-				title="Карта — г. Минск, ул. Руссиянова, д. 3"
+				title="Карта — г. Минск, ул. Глаголева, д. 45, к. 1"
 			></iframe>
 		</div>
 	</div>

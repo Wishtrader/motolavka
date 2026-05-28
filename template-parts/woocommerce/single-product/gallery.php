@@ -46,7 +46,7 @@ if ( $thumb_count > 0 ) {
 	</div>
 
 	<?php if ( $thumb_count > 1 ) : ?>
-		<div class="grid grid-cols-3 sm:grid-cols-4 gap-3 mt-4" data-gallery-thumbs role="list">
+		<div class="grid grid-cols-3 gap-3 mt-4" data-gallery-thumbs role="list">
 			<?php foreach ( $gallery_ids as $index => $attachment_id ) : ?>
 				<?php
 				$thumb_url = wp_get_attachment_image_url( $attachment_id, 'woocommerce_thumbnail' )
