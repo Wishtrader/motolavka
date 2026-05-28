@@ -39,7 +39,7 @@ do_action( 'woocommerce_before_single_product' );
 
 	<section class="w-full px-[10px] md:px-0 pb-12 md:pb-16">
 		<div class="max-w-[1200px] mx-auto">
-			<div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_360px] gap-8 lg:gap-10">
+			<div class="flex flex-col md:flex-row gap-8 md:gap-[16px]">
 				<?php get_template_part( 'template-parts/woocommerce/single-product/details' ); ?>
 				<?php get_template_part( 'template-parts/woocommerce/single-product/sidebar-cards' ); ?>
 			</div>

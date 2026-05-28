@@ -40,9 +40,9 @@ $cart_count = WC()->cart->get_cart_contents_count();
 
 	<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
 
-	<div class="flex items-baseline justify-between gap-4 mb-8 pt-4 border-t border-[#434C58]/60">
-		<span class="text-white text-base md:text-lg font-semibold">Сумма заказа:</span>
-		<span class="text-white text-xl md:text-2xl font-bold order-total-value"><?php wc_cart_totals_order_total_html(); ?></span>
+	<div class="flex items-baseline justify-between gap-4 mb-8 pt-4 border-t border-[#D95F0E]">
+		<span class="text-[#B8C0CC] text-base md:text-[24px] font-normal">Сумма заказа:</span>
+		<span class="text-white text-xl md:text-2xl font-normal order-total-value"><?php wc_cart_totals_order_total_html(); ?></span>
 	</div>
 
 	<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
@@ -64,8 +64,8 @@ $cart_count = WC()->cart->get_cart_contents_count();
 		?>
 	</div>
 
-	<p class="text-[#B8C0CC] text-xs md:text-sm leading-relaxed">
-		После оформления заказа менеджер свяжется с вами для подтверждения наличия, комплектации и согласования способа оплаты.
+	<p class="text-[#B8C0CC] text-xs md:text-[12px] text-center leading-relaxed">
+		После отправки заказа мы свяжемся с вами для подтверждения наличия и деталей получения. Оплата производится после подтверждения.
 	</p>
 
 	<?php do_action( 'woocommerce_after_cart_totals' ); ?>
