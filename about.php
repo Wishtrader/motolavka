@@ -11,7 +11,7 @@
 <section class="relative bg-black overflow-hidden">
 	<div class="relative md:h-screen flex items-center">
 		<!-- Background Image -->
-		<div class="absolute inset-0 bg-[url('<?php echo get_template_directory_uri(); ?>/img/about-bg.png')] bg-cover bg-right"></div>
+		<div class="absolute inset-0 bg-[url('<?php the_field('about_hero-bg') ?>')] bg-cover bg-right"></div>
 		
 		<!-- Content -->
 		<div class="relative w-full max-w-[1200px] mx-auto 2xl:mt-0">
@@ -28,10 +28,10 @@
 				<!-- Left Content -->
 				<div class="flex-1">
 					<h1 class="text-white sm:text-[34px] md:text-[40px] font-bold mb-[30px] leading-[1.15]">
-						Мотолавка - каталог мототехники, запчастей и сервисной поддержки
+					<?php the_field('about_heading') ?>
 					</h1>
 					<p class="text-[#B8C0CC] text-[18px] mb-8 leading-[1.6]">
-						Помогаем подобрать мотоциклы, квадроциклы, скутеры, запчасти и аксессуары под задачи клиента. Консультируем по выбору техники, совместимости комплектующих и вопросам эксплуатации.
+						<?php the_field('about_description') ?>
 					</p>
 					<div class="flex gap-[20px] w-full">
 						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="flex-1 bg-[#FF6B00] text-white text-center px-8 py-4 rounded-[2px] font-medium hover:bg-[#E55A00] transition-colors">
@@ -53,10 +53,10 @@
 			<div class="md:hidden h-full px-[10px] mt-[40px] relative">
 				<div class="relative">
 					<h1 class="text-white text-[34px] font-bold mb-6 leading-tight">
-						Подберите технику<br>и запчасти под<br>свои задачи
+						<?php the_field('about_heading') ?>
 					</h1>
 					<p class="text-gray-300 text-[20px] mb-8 leading-relaxed">
-						Каталог мотоциклов, квадрациклов, скутеров, запчастей и аксессуаров
+						<?php the_field('about_description') ?>
 					</p>
 					<div class="space-y-5 mb-10">
 						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="block bg-[#FF6B00] text-white text-center px-8 py-4 rounded font-medium hover:bg-[#E55A00] transition-colors">

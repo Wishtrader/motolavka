@@ -11,7 +11,7 @@
 <section class="relative overflow-hidden">
 	<div class="relative h-[494px]">
 		<!-- Background Image -->
-		<div class="absolute inset-0 bg-[url('<?php echo get_template_directory_uri(); ?>/img/contact-bg.jpeg')] bg-cover bg-right">
+		<div class="absolute inset-0 bg-[url('<?php the_field('hero_img') ?>')] bg-cover bg-right">
 		</div>
 		
 		<!-- Content -->

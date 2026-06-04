@@ -11,7 +11,7 @@
 <section class="relative overflow-hidden">
 	<div class="relative h-[494px]">
 		<!-- Background Image -->
-		<div class="absolute inset-0 bg-[url('<?php echo get_template_directory_uri(); ?>/img/shipping-bg.jpeg')] bg-cover bg-right">
+		<div class="absolute inset-0 bg-[url('<?php the_field('delivery_main-image') ?>')] bg-cover bg-right">
 		</div>
 		
 		<!-- Content -->
@@ -30,12 +30,12 @@
 					
 					<!-- Title -->
 					<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-6 leading-tight w-full">
-						Доставка и Оплата
+						<?php the_field('delivery_main-heading') ?>
 					</h1>
 					
 					<!-- Description -->
 					<p class="text-[#B8C0CC] text-[16px] md:text-[18px] mb-10 leading-[1.6]">
-						Условия покупки и получения заказа уточняются перед подтверждением. Мы связываемся с клиентом, подтверждаем наличие, цену и удобный способ получения.
+						<?php the_field('delivery_description') ?>
 					</p>
 				</div>
 			</div>
