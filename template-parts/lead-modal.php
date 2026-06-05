@@ -81,9 +81,14 @@ $lead_error_message = ( $lead_error && ! $is_inline_error ) ? motorcycle_shop_le
 						name="lead_phone"
 						required
 						autocomplete="tel"
+						inputmode="tel"
+pattern="^\+375\d{9}$"
+						maxlength="12"
 						class="w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
-						placeholder="Телефон"
+						placeholder="+375XXXXXXXXX"
 					/>
+
+
 
 					<label class="inline-flex items-start gap-3 cursor-pointer mt-1">
 						<input type="checkbox" name="lead_privacy" value="1" class="peer sr-only" required checked />

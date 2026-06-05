@@ -8,6 +8,20 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Validate Belarus phone by strict format: +375-XX-XXX-XX-XX
+ *
+ * @param string $phone Raw user input.
+ * @return bool
+ */
+function motorcycle_shop_is_valid_phone_by_format( $phone ) {
+	$phone = trim( (string) $phone );
+
+	// Allow only exact pattern with dashes.
+return (bool) preg_match( '/^\+375\d{9}$/', $phone );
+}
+
+
+/**
  * Register private post type for stored lead submissions.
  */
 function motorcycle_shop_register_lead_post_type() {
@@ -309,9 +323,13 @@ function motorcycle_shop_render_inline_lead_form( $source = 'home-form' ) {
 				name="lead_phone"
 				required
 				autocomplete="tel"
+				inputmode="tel"
+				pattern="^\+375-\d{2}-\d{3}-\d{2}-\d{2}$"
+				maxlength="18"
 				class="w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
-				placeholder="Телефон"
+				placeholder="+375-XX-XXX-XX-XX"
 			/>
+
 
 			<label class="inline-flex items-start gap-3 cursor-pointer">
 				<input type="checkbox" name="lead_privacy" value="1" class="peer sr-only" required checked />
@@ -376,16 +394,15 @@ function motorcycle_shop_handle_lead_submission() {
 		motorcycle_shop_lead_error_redirect( 'name' );
 	}
 
-	$digits = preg_replace( '/\D+/', '', $phone );
-
-	if ( strlen( $digits ) < 7 ) {
+	if ( ! motorcycle_shop_is_valid_phone_by_format( $phone ) ) {
 		motorcycle_shop_lead_error_redirect( 'phone' );
 	}
+
 
 	$title = sprintf(
 		'%s — %s',
 		$name,
-		$phone
+		trim( $phone )
 	);
 
 	$author_id = 1;
@@ -565,17 +582,16 @@ function motorcycle_shop_handle_contact_form_submission() {
 		motorcycle_shop_contact_error_redirect( 'name' );
 	}
 
-	$digits = preg_replace( '/\D+/', '', $phone );
-
-	if ( strlen( $digits ) < 7 ) {
+	if ( ! motorcycle_shop_is_valid_phone_by_format( $phone ) ) {
 		motorcycle_shop_contact_error_redirect( 'phone' );
 	}
+
 
 	// Save to database as lead
 	$title = sprintf(
 		'%s — %s',
 		$name,
-		$phone
+		trim( $phone )
 	);
 
 	$author_id = 1;
