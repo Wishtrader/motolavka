@@ -244,7 +244,7 @@ function motorcycle_shop_checkout_fields( $fields ) {
 		'custom_attributes' => array(
 			'inputmode' => 'tel',
 			'pattern'   => '^\\+375\\d{9}$',
-			'maxlength' => '18',
+
 		),
 	);
 

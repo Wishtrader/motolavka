@@ -324,10 +324,10 @@ function motorcycle_shop_render_inline_lead_form( $source = 'home-form' ) {
 				required
 				autocomplete="tel"
 				inputmode="tel"
-				pattern="^\+375-\d{2}-\d{3}-\d{2}-\d{2}$"
-				maxlength="18"
+pattern="^\\+375\\d{9}$"
+				onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode === 43"
 				class="w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
-				placeholder="+375-XX-XXX-XX-XX"
+				placeholder="+375XXXXXXXXX"
 			/>
 
 
