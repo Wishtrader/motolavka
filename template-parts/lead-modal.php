@@ -77,7 +77,7 @@ $lead_error_message = ( $lead_error && ! $is_inline_error ) ? motorcycle_shop_le
 					/>
 
 					<input
-type="tel"
+type="tel" maxlength="13"
 						name="lead_phone"
 						required
 						autocomplete="tel"

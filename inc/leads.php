@@ -319,7 +319,7 @@ function motorcycle_shop_render_inline_lead_form( $source = 'home-form' ) {
 			/>
 
 			<input
-				type="tel"
+				type="tel" maxlength="13"
 				name="lead_phone"
 				required
 				autocomplete="tel"

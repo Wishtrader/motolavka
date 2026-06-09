@@ -161,7 +161,7 @@ $theme_uri = get_template_directory_uri();
 							/>
 
 							<input
-								type="tel"
+								type="tel" maxlength="13"
 								name="contact_phone"
 								required
 								class="contact-phone w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
