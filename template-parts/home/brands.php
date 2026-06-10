@@ -18,7 +18,7 @@
 
   if ( ! empty( $brands ) && ! is_wp_error( $brands ) ) :
   ?>
-  <div class="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-[20px] w-full max-w-[1540px] mx-auto mt-[60px]">
+  <div class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory gap-[20px] w-full max-w-[1540px] mx-auto mt-[60px] sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
     <?php foreach ( $brands as $brand ) :
       $image_id = get_term_meta( $brand->term_id, 'thumbnail_id', true );
       $image_url = '';
@@ -36,7 +36,7 @@
       }
       $brand_link = get_term_link( $brand );
     ?>
-      <a href="<?php echo esc_url( $brand_link ); ?>" class="block group">
+      <a href="<?php echo esc_url( $brand_link ); ?>" class="brand-item block group snap-start shrink-0">
         <img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $brand->name ); ?>" class="w-full h-auto object-contain transition-opacity group-hover:opacity-80" loading="lazy" />
       </a>
     <?php endforeach; ?>

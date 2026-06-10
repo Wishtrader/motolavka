@@ -41,3 +41,15 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 /* Header (1024px → 1200px) */
 .fluid-logo { height: clamp(40px, calc(40px + 20 * (100vw - 1024px) / 176), 60px); }
 .fluid-cat-btn { width: clamp(130px, calc(130px + 50 * (100vw - 1024px) / 176), 180px); }
+
+/* Brands carousel (mobile) */
+.brand-item {
+  width: calc((100% - 40px) / 3);
+  flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .brand-item { width: auto; }
+}
+
+#brands .overflow-x-auto::-webkit-scrollbar { display: none; }
+#brands .overflow-x-auto { scrollbar-width: none; -ms-overflow-style: none; }
