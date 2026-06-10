@@ -15,7 +15,7 @@
 		</div>
 		
 		<!-- Content -->
-		<div class="relative w-full max-w-[1200px] mx-auto h-full my-0 h-full flex items-start">
+		<div class="relative w-full max-w-[1200px] mx-auto h-full my-0 flex items-start fluid-px">
 			<div class="flex max-w-[712px] gap-8 w-full items-center mt-[140px]">
 				<!-- Left Content -->
 				<div class="text-white w-full max-w-[680px]">
@@ -29,7 +29,7 @@
 					</nav>
 					
 					<!-- Title -->
-					<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-6 leading-tight w-full">
+					<h1 class="text-white fluid-h1 font-bold mb-6 leading-tight w-full">
 						Контакты
 					</h1>
 					
@@ -45,7 +45,7 @@ $theme_uri = get_template_directory_uri();
 ?>
 
 <!-- Contact Section -->
-<section class="w-full py-10 px-[10px] md:px-0">
+<section class="w-full py-10 fluid-px">
 	<div class="flex flex-col max-w-[1200px] mx-auto gap-[20px]">
 		<div class="flex flex-col lg:flex-row gap-[20px]">
 			<!-- Contact info cards -->
@@ -107,10 +107,10 @@ $theme_uri = get_template_directory_uri();
 					class="relative flex flex-col h-full min-h-[420px] px-8 py-10 md:px-10 md:py-12 justify-center"
 					data-contact-form
 				>
-					<h2 class="text-white text-[28px] md:text-[32px] font-bold leading-[1.15] mb-4">
+					<h2 class="text-white fluid-h2-sm font-bold leading-[1.15] mb-4">
 						Связаться с нами
 					</h2>
-					<p class="text-[#B8C0CC] text-[14px] md:text-[16px] leading-relaxed mb-8 max-w-[480px]">
+					<p class="text-[#B8C0CC] fluid-body-sm leading-relaxed mb-8 max-w-[480px]">
 						Напишите, что вас интересует, и мы свяжемся с вами в рабочее время.
 					</p>
 

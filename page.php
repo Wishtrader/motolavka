@@ -12,15 +12,15 @@ while ( have_posts() ) :
 
 	if ( ! is_cart() && ! is_checkout() && ! is_account_page() ) :
 		?>
-		<div class="w-full px-[10px] md:px-0 pt-[110px] md:pt-[130px] pb-8">
+		<div class="w-full fluid-px fluid-pt-page pb-8">
 			<div class="max-w-[1200px] mx-auto">
-				<?php the_title( '<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-8">', '</h1>' ); ?>
+				<?php the_title( '<h1 class="text-white fluid-h1 font-bold mb-8">', '</h1>' ); ?>
 			</div>
 		</div>
 		<?php
 	endif;
 	?>
-	<div class="w-full px-[10px] md:px-0 pb-12 <?php echo is_cart() || is_checkout() ? '' : 'max-w-[1200px] mx-auto'; ?>">
+	<div class="w-full px-[10px] lg:px-0 pb-12 <?php echo is_cart() || is_checkout() ? '' : 'max-w-[1200px] mx-auto'; ?>">
 		<div class="<?php echo is_cart() || is_checkout() ? '' : 'max-w-[1200px] mx-auto text-[#B8C0CC] entry-content'; ?>">
 			<?php the_content(); ?>
 		</div>

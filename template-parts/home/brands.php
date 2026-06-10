@@ -1,10 +1,10 @@
 
-<section id="brands" class="w-full py-10 px-[10px] md:px-0">
+<section id="brands" class="w-full py-10 fluid-px">
   <div class="flex flex-col max-w-[1200px] mx-auto gap-[20px]">
-    <h2 class="text-[28px] md:text-[40px] max-w-[800px] text-white font-bold leading-[1.15]">
+    <h2 class="fluid-h2 max-w-[800px] text-white font-bold leading-[1.15]">
       Бренды, с которыми работаем
    </h2>
-    <p class="text-[#F5F7FA] max-w-[800px] text-[16px] md:text-[18px] leading-relaxed font-normal">
+    <p class="text-[#F5F7FA] max-w-[800px] fluid-body leading-relaxed font-normal">
       Подбираем технику и комплектующие по проверенным маркам, с которыми удобно работать по наличию, сервису и подбору запчастей.
     </p>
   </div>
@@ -18,7 +18,7 @@
 
   if ( ! empty( $brands ) && ! is_wp_error( $brands ) ) :
   ?>
-  <div class="grid sm:grid-cols-2 md:grid-cols-7 gap-[20px] w-full max-w-[1540px] mx-auto mt-[60px]">
+  <div class="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-[20px] w-full max-w-[1540px] mx-auto mt-[60px]">
     <?php foreach ( $brands as $brand ) :
       $image_id = get_term_meta( $brand->term_id, 'thumbnail_id', true );
       $image_url = '';

@@ -13,7 +13,7 @@ get_header();
 	<div class="relative md:h-screen flex items-center">
 		<div class="absolute inset-0 bg-[url('<?php echo esc_url( get_template_directory_uri() . '/img/hero-img.png' ); ?>')] bg-cover bg-right"></div>
 
-		<div class="relative w-full max-w-[1200px] mx-auto mt-[140px] 2xl:mt-0">
+		<div class="relative w-full max-w-[1200px] mx-auto mt-[140px] 2xl:mt-0 fluid-px">
 			<div class="hidden md:flex items-center gap-[20px]">
 				<div class="flex-1">
 					<h1 class="text-white sm:text-[34px] md:text-[52px] font-bold mb-[30px] leading-[1.1]">

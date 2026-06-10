@@ -15,7 +15,7 @@
 		</div>
 		
 		<!-- Content -->
-		<div class="relative w-full max-w-[1200px] mx-auto h-full my-0 h-full flex items-start">
+		<div class="relative w-full max-w-[1200px] mx-auto h-full my-0 flex items-start fluid-px">
 			<div class="flex max-w-[712px] gap-8 w-full items-center mt-[140px]">
 				<!-- Left Content -->
 				<div class="text-white w-full max-w-[680px]">
@@ -29,7 +29,7 @@
 					</nav>
 					
 					<!-- Title -->
-					<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-6 leading-tight w-full">
+					<h1 class="text-white fluid-h1 font-bold mb-6 leading-tight w-full">
 						Сервис
 					</h1>
 					

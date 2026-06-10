@@ -14,7 +14,7 @@
 		<div class="absolute inset-0 bg-[url('<?php the_field('about_hero-bg') ?>')] bg-cover bg-right"></div>
 		
 		<!-- Content -->
-		<div class="relative w-full max-w-[1200px] mx-auto 2xl:mt-0">
+		<div class="relative w-full max-w-[1200px] mx-auto 2xl:mt-0 fluid-px">
         <!-- Breadcrumb -->
             <nav class="flex items-center gap-2 text-sm mb-[60px] md:mt-[80px]">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
@@ -27,7 +27,7 @@
 			<div class="hidden md:grid grid-cols-2 items-center gap-[20px]">
 				<!-- Left Content -->
 				<div class="flex-1">
-					<h1 class="text-white sm:text-[34px] md:text-[40px] font-bold mb-[30px] leading-[1.15]">
+					<h1 class="text-white sm:text-[34px] fluid-h1 font-bold mb-[30px] leading-[1.15]">
 					<?php the_field('about_heading') ?>
 					</h1>
 					<p class="text-[#B8C0CC] text-[18px] mb-8 leading-[1.6]">

@@ -26,7 +26,7 @@ $attr_rows   = motorcycle_shop_get_product_attribute_rows( $product );
 	<?php if ( ! empty( $attr_rows ) ) : ?>
 		<div>
 			<h2 class="text-white text-[22px] md:text-[32px] font-normal mb-4 md:mb-6">Характеристики</h2>
-			<div class="overflow-x-auto -mx-[10px] px-[10px] md:mx-0 md:px-0">
+			<div class="overflow-x-auto -mx-[10px] fluid-px md:mx-0">
 				<table class="w-full min-w-[480px] border-collapse text-left text-sm md:text-base">
 					<tbody>
 						<?php foreach ( $attr_rows as $index => $row ) : ?>

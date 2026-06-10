@@ -39,9 +39,9 @@ if ( empty( $related_ids ) ) {
 }
 ?>
 
-<section class="w-full py-10 md:py-14 px-[10px] md:px-0 border-t border-[#2A3038]">
+<section class="w-full fluid-section-py fluid-px border-t border-[#2A3038]">
 	<div class="max-w-[1200px] mx-auto">
-		<h2 class="text-white text-[24px] md:text-[32px] font-bold mb-8 md:mb-10">Рекомендуем также</h2>
+		<h2 class="text-white fluid-h2-sm font-bold mb-8 md:mb-10">Рекомендуем также</h2>
 
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 			<?php

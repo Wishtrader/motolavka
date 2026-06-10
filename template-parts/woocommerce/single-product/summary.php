@@ -16,7 +16,7 @@ $credit_url = home_url( '/#credit' );
 ?>
 
 <div class="flex flex-col text-white gap-[16px]">
-	<h1 class="text-[28px] md:text-[36px] lg:text-[40px] font-bold leading-tight mb-4">
+	<h1 class="fluid-h1 font-bold leading-tight mb-4">
 		<?php echo esc_html( $product->get_name() ); ?>
 	</h1>
 

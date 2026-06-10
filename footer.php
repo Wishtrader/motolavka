@@ -39,9 +39,9 @@ $footer_category_links = motorcycle_shop_footer_category_links();
 ?>
 
 	<footer class="pt-4">
-		<div class="max-w-[1200px] mx-auto px-4 md:px-0">
+		<div class="max-w-[1200px] mx-auto fluid-px">
 			<!-- Main Footer Content -->
-			<div class="hidden md:flex items-stretch gap-16">
+			<div class="hidden lg:flex items-stretch gap-16">
 				<!-- Left Column: Logo & Description -->
 				<div class="flex-shrink-0">
 					<a href="<?php echo esc_url( $footer_home_url ); ?>" class="flex-shrink-0">
@@ -104,7 +104,7 @@ $footer_category_links = motorcycle_shop_footer_category_links();
 			</div>
 
 			<!-- Mobile Footer -->
-			<div class="md:hidden py-8 space-y-6">
+			<div class="lg:hidden py-8 space-y-6">
 				<div>
 					<a href="<?php echo esc_url( $footer_home_url ); ?>" class="inline-block mb-4">
 						<img src="<?php echo esc_url( get_template_directory_uri() . '/img/logo.svg' ); ?>" alt="МОТОЛАВКА" class="h-[60px] w-auto">
@@ -165,14 +165,14 @@ $footer_category_links = motorcycle_shop_footer_category_links();
 
 		<!-- Footer Bottom Bar -->
 		<div>
-			<div class="max-w-[1200px] mx-auto px-2">
-				<div class="hidden md:flex items-center justify-between py-4">
+			<div class="max-w-[1200px] mx-auto fluid-px">
+				<div class="hidden lg:flex items-center justify-between py-4">
 					<a href="<?php echo esc_url( $footer_privacy_url ); ?>" class="text-[#B8C0CC] text-sm hover:text-[#B8C0CC] transition-colors">Политика конфиденциальности</a>
 					<p class="text-[#B8C0CC] text-sm">© Мотолавка, 2026. Все права защищены.</p>
 					<a href="<?php echo esc_url( $footer_cookie_url ); ?>" class="text-[#B8C0CC] text-sm hover:text-[#B8C0CC] transition-colors">Политика обработки файлов cookie</a>
 				</div>
 
-				<div class="md:hidden py-4 text-center">
+				<div class="lg:hidden py-4 text-center">
 					<p class="text-[#B8C0CC] text-sm mb-2">© Мотолавка, 2026. Все права защищены.</p>
 					<div class="space-y-1">
 						<a href="<?php echo esc_url( $footer_privacy_url ); ?>" class="block text-[#B8C0CC] text-sm hover:text-[#FF6B00] transition-colors">Политика конфиденциальности</a>

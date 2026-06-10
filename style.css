@@ -11,3 +11,33 @@ License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: motorcycle-shop
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/* ===== Fluid sizing (768px → 1200px) ===== */
+
+/* Fonts */
+.fluid-h1 { font-size: clamp(32px, calc(32px + 8 * (100vw - 768px) / 432), 40px); }
+.fluid-h2 { font-size: clamp(28px, calc(28px + 12 * (100vw - 768px) / 432), 40px); }
+.fluid-h2-sm { font-size: clamp(24px, calc(24px + 8 * (100vw - 768px) / 432), 32px); }
+.fluid-h3 { font-size: clamp(22px, calc(22px + 6 * (100vw - 768px) / 432), 28px); }
+.fluid-body { font-size: clamp(16px, calc(16px + 2 * (100vw - 768px) / 432), 18px); }
+.fluid-body-sm { font-size: clamp(14px, calc(14px + 2 * (100vw - 768px) / 432), 16px); }
+
+/* Spacing */
+.fluid-px { padding-left: 10px; padding-right: 10px; }
+@media (min-width: 1200px) {
+  .fluid-px { padding-left: 0; padding-right: 0; }
+}
+.fluid-pt-page { padding-top: clamp(110px, calc(110px + 20 * (100vw - 768px) / 432), 130px); }
+.fluid-section-py { padding-top: clamp(40px, calc(40px + 16 * (100vw - 768px) / 432), 56px); padding-bottom: clamp(40px, calc(40px + 16 * (100vw - 768px) / 432), 56px); }
+.fluid-mt { margin-top: clamp(20px, calc(20px + 20 * (100vw - 768px) / 432), 40px); }
+.fluid-mb { margin-bottom: clamp(12px, calc(12px + 8 * (100vw - 768px) / 432), 20px); }
+
+/* Cards & images */
+.fluid-card-img { height: clamp(150px, calc(150px + 60 * (100vw - 768px) / 432), 210px); }
+.fluid-card-px { padding-left: clamp(16px, calc(16px + 6 * (100vw - 768px) / 432), 22px); padding-right: clamp(16px, calc(16px + 6 * (100vw - 768px) / 432), 22px); }
+.fluid-card-py { padding-top: clamp(28px, calc(28px + 12 * (100vw - 768px) / 432), 40px); padding-bottom: clamp(28px, calc(28px + 12 * (100vw - 768px) / 432), 40px); }
+
+/* Header (1024px → 1200px) */
+.fluid-logo { height: clamp(40px, calc(40px + 20 * (100vw - 1024px) / 176), 60px); }
+.fluid-cat-btn { width: clamp(130px, calc(130px + 50 * (100vw - 1024px) / 176), 180px); }

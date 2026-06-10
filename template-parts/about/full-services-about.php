@@ -7,13 +7,13 @@ $cards = [
 ];
 ?>
 
-<section id="full-services" class="w-full py-10 px-[10px] md:px-0">
-  <div class="flex flex-col md:flex-row max-w-[1200px] mx-auto gap-[20px]">
-    <div class="flex flex-col flex-1 md:min-w-[610px] gap-5 py-[40px]">
-      <h2 class="text-[28px] md:text-[40px] w-full max-w-[800px] text-white font-bold leading-[1.15]">
+<section id="full-services" class="w-full py-10 fluid-px">
+  <div class="flex flex-col lg:flex-row max-w-[1200px] mx-auto gap-[20px]">
+    <div class="flex flex-col flex-1 lg:min-w-[610px] gap-5 py-[40px]">
+      <h2 class="fluid-h2 w-full max-w-[800px] text-white font-bold leading-[1.15]">
         <?php the_field('about_services-heading')  ?>
       </h2>
-      <p class="text-[#B8C0CC] max-w-[800px] text-[16px] md:text-[18px] leading-[1.6] font-normal">
+      <p class="text-[#B8C0CC] max-w-[800px] fluid-body leading-[1.6] font-normal">
       <?php the_field('about_services-description') ?>
       </p>
     </div>

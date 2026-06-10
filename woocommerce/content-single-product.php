@@ -23,7 +23,7 @@ do_action( 'woocommerce_before_single_product' );
 	<?php get_template_part( 'template-parts/woocommerce/single-product/breadcrumbs' ); ?>
 
 	<?php if ( function_exists( 'wc_print_notices' ) ) : ?>
-		<div class="max-w-[1200px] mx-auto px-[10px] md:px-0 mb-4 woocommerce-notices-wrapper">
+		<div class="max-w-[1200px] mx-auto fluid-px mb-4 woocommerce-notices-wrapper">
 			<?php wc_print_notices(); ?>
 		</div>
 	<?php endif; ?>
@@ -56,7 +56,7 @@ do_action( 'woocommerce_before_single_product' );
 	</div>
 	<?php endif; ?>
 
-	<section class="w-full px-[10px] md:px-0 pb-10 md:pb-14 relative z-10">
+	<section class="w-full fluid-px pb-10 md:pb-14 relative z-10">
 		<div class="max-w-[1200px] mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 				<?php get_template_part( 'template-parts/woocommerce/single-product/gallery' ); ?>
@@ -65,7 +65,7 @@ do_action( 'woocommerce_before_single_product' );
 		</div>
 	</section>
 
-	<section class="w-full px-[10px] md:px-0 pb-12 md:pb-16 relative z-10">
+	<section class="w-full fluid-px pb-12 md:pb-16 relative z-10">
 		<div class="max-w-[1200px] mx-auto">
 			<div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_360px] gap-8 lg:gap-10">
 				<?php get_template_part( 'template-parts/woocommerce/single-product/details' ); ?>

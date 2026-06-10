@@ -14,7 +14,7 @@ if ( is_product_category() ) {
 }
 ?>
 
-<section id="product-archive" class="w-full py-10 md:py-12 px-[10px] md:px-0">
+<section id="product-archive" class="w-full py-10 md:py-12 fluid-px">
 	<div class="max-w-[1200px] mx-auto">
 		<?php if ( woocommerce_product_loop() ) : ?>
 

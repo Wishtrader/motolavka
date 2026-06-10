@@ -11,7 +11,7 @@ $search_query      = get_search_query();
 $is_product_search = motorcycle_shop_is_product_search();
 ?>
 
-<div class="w-full px-[10px] md:px-0 pt-[110px] md:pt-[130px] pb-6 md:pb-8">
+<div class="w-full fluid-px fluid-pt-page pb-6 md:pb-8">
 	<div class="max-w-[1200px] mx-auto">
 		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
@@ -21,7 +21,7 @@ $is_product_search = motorcycle_shop_is_product_search();
 			<span class="text-white">Поиск</span>
 		</nav>
 
-		<h1 class="text-white text-[28px] md:text-[40px] font-bold leading-tight mb-4">
+		<h1 class="text-white fluid-h2 font-bold leading-tight mb-4">
 			<?php if ( $search_query ) : ?>
 				<?php
 				printf(
@@ -41,7 +41,7 @@ $is_product_search = motorcycle_shop_is_product_search();
 	</div>
 </div>
 
-<section class="w-full py-6 md:py-10 px-[10px] md:px-0">
+<section class="w-full py-6 md:py-10 fluid-px">
 	<div class="max-w-[1200px] mx-auto">
 		<?php if ( have_posts() && $is_product_search && class_exists( 'WooCommerce' ) ) : ?>
 

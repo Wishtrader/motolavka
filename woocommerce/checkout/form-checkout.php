@@ -16,7 +16,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 ?>
 
-<div class="w-full px-[10px] md:px-0 pt-[110px] md:pt-[130px] pb-10 md:pb-14">
+<div class="w-full fluid-px pt-[110px] md:pt-[130px] pb-10 md:pb-14">
 	<div class="max-w-[1200px] mx-auto">
 		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6 md:mt-[60px] md:mb-8" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>

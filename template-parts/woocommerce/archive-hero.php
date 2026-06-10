@@ -35,7 +35,7 @@ $last_index  = count( $breadcrumbs ) - 1;
 		></div>
 		<div class="absolute inset-0 bg-black/75"></div>
 
-		<div class="relative w-full max-w-[1200px] mx-auto px-[10px] md:px-0 pt-[120px] md:pt-[140px] pb-12 md:pb-16">
+		<div class="relative w-full max-w-[1200px] mx-auto fluid-px fluid-pt-page pb-12 md:pb-16">
 			<nav class="flex flex-wrap items-center gap-2 text-sm mt-10 mb-8 md:mb-[60px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
 				<?php foreach ( $breadcrumbs as $index => $crumb ) : ?>
 					<?php if ( $index > 0 ) : ?>
@@ -55,11 +55,11 @@ $last_index  = count( $breadcrumbs ) - 1;
 			</nav>
 
 			<div class="max-w-[720px]">
-				<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-6 leading-tight">
+				<h1 class="text-white fluid-h1 font-bold mb-6 leading-tight">
 					<?php echo esc_html( $term->name ); ?>
 				</h1>
 
-				<p class="text-[#B8C0CC] text-[16px] md:text-[18px] mb-8 md:mb-10 leading-relaxed">
+				<p class="text-[#B8C0CC] fluid-body mb-8 md:mb-10 leading-relaxed">
 					<?php echo esc_html( $description ); ?>
 				</p>
 

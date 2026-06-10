@@ -45,7 +45,7 @@
 	<header class="absolute flex flex-col w-full top-0 z-50">
 		<!-- Top Bar -->
 		<div class="text-white text-sm my-[20px]">
-			<div class="max-w-[1200px] h-[42px] mx-auto px-4 flex items-center justify-center gap-6">
+			<div class="max-w-[1200px] h-[42px] mx-auto flex items-center justify-center gap-6 fluid-px">
 				<span class="hidden sm:inline">Пн-Пт с 9:00 до 19:00</span>
 				<div class="hidden sm:block h-[42px] w-[1px] bg-[#B8C0CC]"></div>
 				<span>Доставка по Беларуси</span>
@@ -56,15 +56,15 @@
 		
 		<!-- Main Header -->
 		<div>
-			<div class="max-w-[1200px] mx-auto">
-				<div class="hidden md:flex items-center h-[60px] gap-8">
+			<div class="max-w-[1200px] mx-auto fluid-px">
+				<div class="hidden lg:flex items-center h-[60px] gap-8">
 					<!-- Logo -->
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex-shrink-0">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="МОТОЛАВКА" class="h-[60px] w-auto">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="МОТОЛАВКА" class="fluid-logo w-auto">
 					</a>
 					
 					<!-- Catalog Button -->
-					<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="bg-[#F97316] flex items-center justify-center h-[52px] w-[180px] rounded-[2px] text-white font-medium hover:bg-[#FB8A3C] transition-colors">
+					<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="bg-[#F97316] flex items-center justify-center h-[52px] fluid-cat-btn rounded-[2px] text-white font-medium hover:bg-[#FB8A3C] transition-colors">
 						Каталог
 					</a>
 					
@@ -86,7 +86,7 @@
 				</div>
 				
 				<!-- Mobile Header -->
-				<div class="md:hidden flex items-center justify-between h-[70px] px-[10px]">
+				<div class="lg:hidden flex items-center justify-between h-[70px] px-[10px]">
 					<!-- Logo -->
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex items-center">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="МОТОЛАВКА" class="h-[40px] w-auto">
@@ -110,7 +110,7 @@
 		</div>
 		
 		<!-- Mobile Menu Overlay -->
-		<div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/80 z-50 md:hidden">
+		<div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/80 z-50 lg:hidden">
 			<div class="flex flex-col h-full">
 				<!-- Header with Cart and Close -->
 				<div class="flex items-center justify-between p-4 bg-[#1A1A1A] border-b border-gray-700">

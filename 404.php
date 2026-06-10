@@ -16,7 +16,7 @@ get_header();
 		<h3 class="text-lg font-semibold leading-[1.35]">Страница не найдена</h3>
 		<p class="text-white text-md text-center text-base my-[20px]">К сожалению, запрашиваемая страница недоступна. <br>
 Возможно, страница была удалена, ссылка устарела или адрес указан с ошибкой.</p>
-			<a href="<?php echo esc_url( motorcycle_shop_page_url( '/', 'home' ) ); ?>" class="flex w-full flex-1 md:max-w-[285px] max-h-[52px] mt-[50px] items-center justify-center rounded-[2px] bg-[#F97316] text-[#F5F7FA] px-4 py-[16px] text-base font-semibold hover:bg-[#111317] transition-colors border border-[#434C58]">
+			<a href="<?php echo esc_url( motorcycle_shop_page_url( '/', 'home' ) ); ?>" class="flex w-full flex-1 lg:max-w-[285px] max-h-[52px] mt-[50px] items-center justify-center rounded-[2px] bg-[#F97316] text-[#F5F7FA] px-4 py-[16px] text-base font-semibold hover:bg-[#111317] transition-colors border border-[#434C58]">
 			Вернуться на главную
 		</a>
 	</div>

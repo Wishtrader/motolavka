@@ -7,13 +7,13 @@ $cards = [
 ];
 ?>
 
-<section id="full-services" class="w-full py-10 px-[10px] md:px-0">
+<section id="full-services" class="w-full py-10 fluid-px">
   <div class="flex flex-col max-w-[1200px] mx-auto gap-[20px]">
-    <h2 class="text-[28px] md:text-[40px] max-w-[800px] text-white font-bold leading-[1.15]">
+    <h2 class="fluid-h2 max-w-[800px] text-white font-bold leading-[1.15]">
       <?php the_field('heading') ?>
     </h2>
 
-    <p class="text-[#F5F7FA] max-w-[800px] text-[16px] md:text-[18px] leading-relaxed font-normal">
+    <p class="text-[#F5F7FA] max-w-[800px] fluid-body leading-relaxed font-normal">
     <?php the_field('description') ?>
     </p>
 
@@ -25,7 +25,7 @@ $cards = [
       ?>
         <div
           class="transform transition duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform
-                bg-[#2A3038] text-white flex flex-col px-[22px] py-[40px]
+                bg-[#2A3038] text-white flex flex-col fluid-card-px fluid-card-py
                 hover:-translate-y-[10px] hover:shadow-[0_12px_30px_rgba(0,0,0,0.45)]
                 hover:bg-gradient-to-b hover:from-[#38424A] hover:to-[#2E3A41] hover:text-[#E6F0FF]
                 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6B7280]

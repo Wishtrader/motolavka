@@ -1,10 +1,10 @@
-<section id="popular-models" class="w-full py-10 px-[10px] md:px-0">
-  <div class="flex flex-col md:flex-row w-full justify-between max-w-[1200px] mx-auto gap-[20px]">
+<section id="popular-models" class="w-full py-10 fluid-px">
+  <div class="flex flex-col lg:flex-row w-full justify-between max-w-[1200px] mx-auto gap-[20px]">
     <div>
-      <h2 class="text-[28px] md:text-[40px] max-w-[800px] text-white font-bold leading-[1.15] mb-[20px]">
+      <h2 class="fluid-h2 max-w-[800px] text-white font-bold leading-[1.15] fluid-mb">
         Популярные модели
      </h2>
-      <p class="text-[#F5F7FA] max-w-[800px] text-[16px] md:text-[18px] leading-relaxed font-normal">
+      <p class="text-[#F5F7FA] max-w-[800px] fluid-body leading-relaxed font-normal">
          Подборка техники, на которую чаще всего обращают внимание наши клиенты.
       </p>
     </div>
@@ -46,9 +46,9 @@ if ( class_exists( 'WC_Product' ) ) {
 $product_url = $popular_product ? get_permalink( $popular_product->get_id() ) : '#';
 ?>
 
-        <div class="flex flex-col md:flex-row w-full items-center justify-between gap-[30px]">
-          <h4 class="text-white text-left w-full text-xl md:text-2xl font-semibolt">7 890<span class="text-base text-[#B8C0CC]"> BYN</span></h4>
-          <a href="<?php echo esc_url( $product_url ); ?>" class="flex w-full flex-1 md:min-w-[210px] items-center justify-center rounded-[2px] bg-[#FF6B00] text-[#F5F7FA] px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors">
+        <div class="flex flex-col lg:flex-row w-full items-center justify-between gap-[30px]">
+          <h4 class="text-white text-left w-full text-xl lg:text-2xl font-semibolt">7 890<span class="text-base text-[#B8C0CC]"> BYN</span></h4>
+          <a href="<?php echo esc_url( $product_url ); ?>" class="flex w-full flex-1 lg:min-w-[210px] items-center justify-center rounded-[2px] bg-[#FF6B00] text-[#F5F7FA] px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors">
             Подробнее	
           </a>
         </div>

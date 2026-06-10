@@ -36,7 +36,7 @@ $message = $order
 	<div class="absolute inset-0 bg-[url('<?php echo esc_url( $bg_url ); ?>')] bg-cover bg-center bg-no-repeat"></div>
 	<div class="absolute inset-0 bg-black/55"></div>
 
-	<div class="relative w-full max-w-[1200px] mx-auto px-[10px] md:px-0 py-[140px] md:py-[160px]">
+	<div class="relative w-full max-w-[1200px] mx-auto fluid-px py-[140px] md:py-[160px]">
 		<div class="max-w-[720px] mx-auto text-center">
 			<h1 class="text-white text-[32px] md:text-[48px] font-bold leading-tight mb-6">
 				<?php echo esc_html( $title ); ?>
