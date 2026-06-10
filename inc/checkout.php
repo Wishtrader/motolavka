@@ -233,14 +233,21 @@ function motorcycle_shop_checkout_fields( $fields ) {
 	}
 
 	$fields['billing']['billing_phone'] = array(
-		'label'       => 'Телефон',
-		'placeholder' => '+375 XX XXX-XX-XX',
-		'required'    => true,
-		'class'       => $input_row,
-		'priority'    => 20,
-		'type'        => 'tel',
-		'autocomplete' => 'tel',
+		'label'             => 'Телефон',
+		'placeholder'       => '+375-XX-XXX-XX-XX',
+		'required'          => true,
+		'class'             => $input_row,
+		'priority'          => 20,
+		'type'              => 'tel',
+		'autocomplete'     => 'tel',
+		'inputmode'        => 'tel',
+		'custom_attributes' => array(
+			'inputmode' => 'tel',
+			'pattern'   => '^\\+375-[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}$',
+			'maxlength' => '18',
+		),
 	);
+
 
 	$fields['billing']['billing_email'] = array(
 		'label'       => 'E-mail',
@@ -657,6 +664,20 @@ add_action( 'woocommerce_checkout_update_order_meta', 'motorcycle_shop_checkout_
  * @param array    $data   Posted data.
  * @param WP_Error $errors Validation errors.
  */
+function motorcycle_shop_checkout_validate_phone_format( $data, $errors ) {
+	if ( empty( $data['billing_phone'] ) ) {
+		$errors->add( 'billing_phone', 'Укажите корректный номер телефона.' );
+		return;
+	}
+
+	$phone = sanitize_text_field( wp_unslash( $data['billing_phone'] ) );
+
+	if ( ! motorcycle_shop_is_valid_phone_by_format( $phone ) ) {
+		$errors->add( 'billing_phone', 'Укажите номер телефона в формате +375-XX-XXX-XX-XX.' );
+	}
+}
+add_action( 'woocommerce_after_checkout_validation', 'motorcycle_shop_checkout_validate_phone_format', 9, 2 );
+
 function motorcycle_shop_checkout_validate_delivery_address( $data, $errors ) {
 	$type = isset( $_POST['motorcycle_delivery_type'] ) ? sanitize_text_field( wp_unslash( $_POST['motorcycle_delivery_type'] ) ) : 'pickup'; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 

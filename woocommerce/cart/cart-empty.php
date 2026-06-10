@@ -13,7 +13,7 @@ do_action( 'woocommerce_cart_is_empty' );
 
 <div class="w-full px-[10px] md:px-0 pt-[110px] md:pt-[130px] pb-16">
 	<div class="max-w-[1200px] mx-auto">
-		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6 mt-[65px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
+		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6 md:mt-[35px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
 			<svg class="w-4 h-4 text-[#FB8A3C] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>

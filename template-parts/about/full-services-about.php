@@ -1,9 +1,9 @@
 <?php
 $cards = [
-  ['img' => get_template_directory_uri() . '/img/s1.svg', 'title' => 'Подбор техники', 'description' => 'Поможем подобрать мотоцикл, квадроцикл или скутер под ваш опыт, задачи и бюджет.'],
-  ['img' => get_template_directory_uri() . '/img/s2.svg', 'title' => 'Запчасти и аксессуары', 'description' => 'Подберём нужные комплектующие, расходники и экипировку для вашей техники.'],
-  ['img' => get_template_directory_uri() . '/img/s3.svg', 'title' => 'Консультация', 'description' => 'Подсказываем по выбору, наличию, совместимости и эксплуатации'],
-  ['img' => get_template_directory_uri() . '/img/s4.svg', 'title' => 'Поддержка после покупки', 'description' => 'Помогаем с дальнейшими вопросами по обслуживанию и подбору нужных позиций.'],
+  ['img' => get_field('service1_icon'), 'title' => get_field('service1_heading'), 'description' => get_field('service1_description')],
+  ['img' => get_field('service2_icon'), 'title' => get_field('service2_heading'), 'description' => get_field('service2_description')],
+  ['img' => get_field('service3_icon'), 'title' => get_field('service3_heading'), 'description' => get_field('service3_description')],
+  ['img' => get_field('service4_icon'), 'title' => get_field('service4_heading'), 'description' => get_field('service4_description')],
 ];
 ?>
 
@@ -11,10 +11,10 @@ $cards = [
   <div class="flex flex-col md:flex-row max-w-[1200px] mx-auto gap-[20px]">
     <div class="flex flex-col flex-1 md:min-w-[610px] gap-5 py-[40px]">
       <h2 class="text-[28px] md:text-[40px] w-full max-w-[800px] text-white font-bold leading-[1.15]">
-        Не просто продаём технику, а помогаем выбрать подходящее решение
+        <?php the_field('about_services-heading')  ?>
       </h2>
       <p class="text-[#B8C0CC] max-w-[800px] text-[16px] md:text-[18px] leading-[1.6] font-normal">
-        Для нас важно, чтобы клиенту было удобно не только выбрать товар, но и получить понятную консультацию. Мы работаем с мототехникой, комплектующими и аксессуарами, подсказываем по совместимости, помогаем с подбором и остаёмся на связи после покупки.
+      <?php the_field('about_services-description') ?>
       </p>
     </div>
 

@@ -24,11 +24,11 @@ if ( $order_id && $order_key && function_exists( 'wc_get_order' ) ) {
 }
 
 $title = $order
-	? sprintf( 'Заказ №%s оформлен', $order->get_order_number() )
+	? sprintf( 'Заказ отправлен', $order->get_order_number() )
 	: 'Заказ отправлен';
 
 $message = $order
-	? 'Спасибо! Мы получили ваш заказ и отправили подтверждение на e-mail. Менеджер свяжется с вами для уточнения наличия и деталей получения.'
+	? 'Спасибо! Ваша заявка принята. Менеджер свяжется с вами в рабочее время для подтверждения заказа.'
 	: 'Спасибо! Ваша заявка принята. Менеджер свяжется с вами в рабочее время для подтверждения заказа.';
 ?>
 
@@ -46,7 +46,7 @@ $message = $order
 			</p>
 			<a
 				href="<?php echo esc_url( $catalog_url ); ?>"
-				class="inline-flex items-center justify-center min-w-[280px] bg-[#FF6B00] text-white px-8 py-4 rounded-[2px] text-base font-semibold hover:bg-[#E55A00] transition-colors"
+				class="inline-flex items-center justify-center min-w-[337px] h-[52px] bg-[#FF6B00] text-white px-8 py-4 rounded-[2px] text-base font-semibold hover:bg-[#E55A00] transition-colors"
 			>
 				Вернуться в каталог
 			</a>

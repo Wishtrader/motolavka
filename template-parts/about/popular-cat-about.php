@@ -3,10 +3,10 @@
     <div class="flex flex-col md:flex-row w-full justify-between max-w-[1200px] mx-auto gap-[20px] items-start">
     <div>
       <h2 class="text-[28px] md:text-[40px] max-w-[800px] text-white font-bold leading-[1.15] mb-[20px]">
-        Что можно найти в Мотолавке
+				<?php the_field( 'services-catalog_heading' ); ?>
     </h2>
       <p class="text-[#B8C0CC] max-w-[900px] w-full text-[16px] md:text-[18px] leading-[1.6] font-normal">
-        Каталог объединяет основные категории мототехники, комплектующих и аксессуаров, а также сервисную поддержку для клиентов, которым важен не только выбор, но и дальнейшее обслуживание.
+        <?php the_field( 'services-catalog_description' ); ?>
       </p>
     </div>
     <div class="flex items-center gap-[10px] md:justify-end mt-5">

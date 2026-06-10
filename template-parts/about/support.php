@@ -7,12 +7,12 @@
 		<div class="flex flex-col justify-center w-full md:w-auto md:min-w-[793px] ml-auto pl-0 md:pl-[100px]">
 			<!-- Title -->
 			<h2 class="text-white text-[28px] md:text-[40px] font-bold leading-[1.15] mb-4">
-				После покупки остаемся рядом
+				<?php the_field('support_heading') ?>
 			</h2>
 
 			<!-- Description -->
 			<p class="text-[#B8C0CC] text-[14px] md:text-[16px] leading-relaxed max-w-[700px] mb-8">
-				Подскажем по расходникам, обслуживанию, совместимости запчастей и базовым вопросам эксплуатации. Для клиента это значит более понятный и спокойный опыт владения техникой.
+				<?php the_field('support_description') ?>
 			</p>
 
 			<!-- Features List -->
@@ -23,9 +23,11 @@
 						<img src="<?php echo get_template_directory_uri(); ?>/img/mark.svg" alt="check" class="w-[44px] h-[44px]">
 					</div>
 					<div>
-						<h3 class="text-white text-[18px] font-semibold mb-1">Диагностика</h3>
+						<h3 class="text-white text-[18px] font-semibold mb-1">
+							<?php the_field('support_subheading1') ?>
+						</h3>
 						<p class="text-[#B8C0CC] text-[14px] leading-relaxed">
-							Помощь с подбором расходников и базовой проверкой состояния техники.
+							<?php the_field('support_description1') ?>
 						</p>
 					</div>
 				</div>
@@ -36,9 +38,11 @@
 						<img src="<?php echo get_template_directory_uri(); ?>/img/mark.svg" alt="check" class="w-[44px] h-[44px]">
 					</div>
 					<div>
-						<h3 class="text-white text-[18px] font-semibold mb-1">Обслуживание</h3>
+						<h3 class="text-white text-[18px] font-semibold mb-1">
+							<?php the_field('support_subheading2') ?>
+						</h3>
 						<p class="text-[#B8C0CC] text-[14px] leading-relaxed">
-							Подскажем по регулярному уходу и базовым сервисным работам.
+							<?php the_field('support_description2') ?>
 						</p>
 					</div>
 				</div>
@@ -49,9 +53,11 @@
 						<img src="<?php echo get_template_directory_uri(); ?>/img/mark.svg" alt="check" class="w-[44px] h-[44px]">
 					</div>
 					<div>
-						<h3 class="text-white text-[18px] font-semibold mb-1">Подбор запчастей</h3>
+						<h3 class="text-white text-[18px] font-semibold mb-1">
+							<?php the_field('support_subheading3') ?>
+						</h3>
 						<p class="text-[#B8C0CC] text-[14px] leading-relaxed">
-							Помогаем найти подходящие детали под конкретную модель техники.
+							<?php the_field('support_description3') ?>
 						</p>
 					</div>
 				</div>
@@ -62,9 +68,11 @@
 						<img src="<?php echo get_template_directory_uri(); ?>/img/mark.svg" alt="check" class="w-[44px] h-[44px]">
 					</div>
 					<div>
-						<h3 class="text-white text-[18px] font-semibold mb-1">Консультация</h3>
+						<h3 class="text-white text-[18px] font-semibold mb-1">
+							<?php the_field('support_subheading4') ?>
+						</h3>
 						<p class="text-[#B8C0CC] text-[14px] leading-relaxed">
-							Отвечаем на вопросы по эксплуатации и выбору комплектующих.
+							<?php the_field('support_description4') ?>
 						</p>
 					</div>
 				</div>

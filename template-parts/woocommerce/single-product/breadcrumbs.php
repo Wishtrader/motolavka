@@ -17,7 +17,7 @@ $breadcrumbs = motorcycle_shop_wc_product_breadcrumbs( $product );
 $last_index  = count( $breadcrumbs ) - 1;
 ?>
 
-<div class="w-full px-[10px] md:px-0 pt-[110px] md:pt-[130px] pb-6 md:pb-8">
+<div class="w-full px-[10px] md:px-0 pt-[110px] md:pt-[130px] pb-6 md:pb-8 relative z-10">
 	<div class="max-w-[1200px] mx-auto">
 		<nav class="flex flex-wrap items-center gap-2 text-sm mt-10" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
 			<?php foreach ( $breadcrumbs as $index => $crumb ) : ?>

@@ -143,6 +143,9 @@ function motorcycle_shop_scripts() {
 
 	wp_enqueue_script( 'motorcycle-shop-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
+	wp_enqueue_script( 'imask', 'https://unpkg.com/imask', array(), null, true );
+	wp_enqueue_script( 'motorcycle-shop-phone-mask', get_template_directory_uri() . '/js/phone-mask.js', array( 'imask' ), _S_VERSION, true );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}

@@ -76,14 +76,17 @@ $lead_error_message = ( $lead_error && ! $is_inline_error ) ? motorcycle_shop_le
 						placeholder="Имя"
 					/>
 
-					<input
-						type="tel"
-						name="lead_phone"
-						required
-						autocomplete="tel"
-						class="w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
-						placeholder="Телефон"
-					/>
+				<input
+					type="tel"
+					name="lead_phone"
+					required
+					autocomplete="tel"
+					inputmode="tel"
+					class="w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
+					placeholder="+375 (XX) XXX-XX-XX"
+				/>
+
+
 
 					<label class="inline-flex items-start gap-3 cursor-pointer mt-1">
 						<input type="checkbox" name="lead_privacy" value="1" class="peer sr-only" required checked />
@@ -109,7 +112,7 @@ $lead_error_message = ( $lead_error && ! $is_inline_error ) ? motorcycle_shop_le
 
 					<button
 						type="submit"
-						class="flex w-full mt-3 items-center justify-center rounded-[2px] bg-[#FF6B00] text-white px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors"
+						class="flex w-full mt-3 items-center justify-center rounded-[2px] bg-[#FF6B00] text-white px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						Отправить заявку
 					</button>

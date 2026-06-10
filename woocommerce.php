@@ -14,6 +14,8 @@ if ( is_singular( 'product' ) ) {
 		the_post();
 		wc_get_template_part( 'content', 'single-product' );
 	}
+
+	get_template_part( 'template-parts/catalog/form', 'form' );
 } elseif ( is_product_category() || is_product_tag() || is_tax( 'product_cat' ) || is_tax( 'product_tag' ) || is_shop() ) {
 	wc_get_template( 'archive-product.php' );
 } elseif ( is_cart() || is_checkout() || is_account_page() ) {

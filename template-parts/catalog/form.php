@@ -1,4 +1,5 @@
 
+
 <section id="form" class="relative w-full py-10 px-[10px] md:px-0">
 	<div class="absolute inset-0 bg-no-repeat bg-[url('<?php echo esc_url( get_template_directory_uri() . '/img/moto3.png' ); ?>')] bg-center"></div>
 

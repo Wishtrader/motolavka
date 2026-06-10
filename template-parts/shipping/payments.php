@@ -20,7 +20,7 @@
 							<div class="flex items-start gap-3 md:gap-4">
 								<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
 								<p class="text-white text-[14px] md:text-[16px] leading-relaxed">
-									Наличный расчет
+									<?php the_field('variant1') ?>
 								</p>
 							</div>
 						</div>
@@ -29,7 +29,7 @@
 							<div class="flex items-start gap-3 md:gap-4">
 								<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
 								<p class="text-white text-[14px] md:text-[16px] leading-relaxed">
-									Оплата по договорённости
+									<?php the_field('variant2') ?>
 								</p>
 							</div>
 						</div>
@@ -38,7 +38,7 @@
 							<div class="flex items-start gap-3 md:gap-4">
 								<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
 								<p class="text-white text-[14px] md:text-[16px] leading-relaxed">
-									Уточнение деталей перед подтверждением заказа
+									<?php the_field('variant3') ?>
 								</p>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 							<div class="flex items-start gap-3 md:gap-4">
 								<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
 								<p class="text-white text-[14px] md:text-[16px] leading-relaxed">
-									Если вас интересует покупка в кредит, свяжитесь с нами — подскажем по доступным условиям и поможем уточнить детали по выбранной модели.
+									<?php the_field('variant4') ?>
 								</p>
 							</div>
 						</div>
@@ -64,7 +64,7 @@
 						<div class="flex items-start gap-3 md:gap-4">
 							<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
 							<p class="text-white text-[14px] md:text-[16px] leading-relaxed">
-								Доставка по Беларуси обсуждается индивидуально в зависимости от товара, габаритов и города получения. Также возможно согласование самовывоза.
+								<?php the_field('delivery') ?>
 							</p>
 						</div>
 					</div>
@@ -84,39 +84,40 @@
 				</div>
 				
 				<div class="space-y-4 md:space-y-6">
+						
 					<div>
 						<h4 class="text-white text-[16px] md:text-[18px] font-semibold mb-2 md:mb-3">
-							Как узнать, есть ли товар в наличии?
+							<?php the_field('q1') ?>
 						</h4>
 						<p class="text-[#B8C0CC] text-[14px] md:text-[15px] leading-relaxed">
-							Мы актуализируем статусы на сайте, но точное наличие подтверждается менеджером после заявки.
+							<?php the_field('a1') ?>
 						</p>
 					</div>
 					
 					<div>
 						<h4 class="text-white text-[16px] md:text-[18px] font-semibold mb-2 md:mb-3">
-							Можно ли уточнить совместимость запчасти?
+							<?php the_field('q2') ?>
 						</h4>
 						<p class="text-[#B8C0CC] text-[14px] md:text-[15px] leading-relaxed">
-							Да, оставьте заявку, и мы поможем подобрать деталь под вашу модель.
+							<?php the_field('a2') ?>
 						</p>
 					</div>
 					
 					<div>
 						<h4 class="text-white text-[16px] md:text-[18px] font-semibold mb-2 md:mb-3">
-							Как согласовывается доставка?
+							<?php the_field('q3') ?>
 						</h4>
 						<p class="text-[#B8C0CC] text-[14px] md:text-[15px] leading-relaxed">
-							После оформления заказа мы звоним вам и обсуждаем удобный формат, сроки и стоимость доставки.
+							<?php the_field('a3') ?>
 						</p>
 					</div>
 					
 					<div>
 						<h4 class="text-white text-[16px] md:text-[18px] font-semibold mb-2 md:mb-3">
-							Можно ли оформить заказ без регистрации?
+							<?php the_field('q4') ?>
 						</h4>
 						<p class="text-[#B8C0CC] text-[14px] md:text-[15px] leading-relaxed">
-							Конечно, оформление происходит в гостевом режиме, нужен только номер телефона.
+							<?php the_field('a4') ?>
 						</p>
 					</div>
 				</div>
@@ -128,7 +129,7 @@
 					<p class="text-[#B8C0CC] text-[14px] md:text-[16px] mb-4 md:mb-6 leading-[1.5]">
 						Свяжитесь с нами — подскажем по оплате, наличию и получению товара.
 					</p>
-					<a href="#" class="inline-block bg-[#FF6B00] text-white font-semibold px-4 md:px-8 py-3 md:py-4 rounded-none hover:bg-[#FB8A3C] transition-colors w-full">
+					<a href="/contact" class="inline-block bg-[#FF6B00] text-white font-semibold px-4 md:px-8 py-3 md:py-4 rounded-none hover:bg-[#FB8A3C] transition-colors w-full">
 						Связаться с нами
 					</a>
 				</div>

@@ -11,7 +11,7 @@
 <section class="relative overflow-hidden">
 	<div class="relative h-[494px]">
 		<!-- Background Image -->
-		<div class="absolute inset-0 bg-[url('<?php echo get_template_directory_uri(); ?>/img/shipping-bg.jpeg')] bg-cover bg-right">
+		<div class="absolute inset-0 bg-[url('<?php the_field('delivery_main-image') ?>')] bg-cover bg-right">
 		</div>
 		
 		<!-- Content -->
@@ -20,7 +20,7 @@
 				<!-- Left Content -->
 				<div class="text-white w-full max-w-[680px] mt-[140px]">
 					<!-- Breadcrumb -->
-					<nav class="flex items-center gap-2 text-sm mb-[60px]">
+					<nav class="flex items-center gap-2 text-sm mb-[60px] md:mt-[50px]">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
 						<svg class="w-4 h-4 text-[#FB8A3C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -30,12 +30,12 @@
 					
 					<!-- Title -->
 					<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-6 leading-tight w-full">
-						Доставка и Оплата
+						<?php the_field('delivery_main-heading') ?>
 					</h1>
 					
 					<!-- Description -->
 					<p class="text-[#B8C0CC] text-[16px] md:text-[18px] mb-10 leading-[1.6]">
-						Условия покупки и получения заказа уточняются перед подтверждением. Мы связываемся с клиентом, подтверждаем наличие, цену и удобный способ получения.
+						<?php the_field('delivery_description') ?>
 					</p>
 				</div>
 			</div>

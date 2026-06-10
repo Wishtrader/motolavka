@@ -413,7 +413,7 @@ function motorcycle_shop_cart_remove_collaterals() {
 add_action( 'wp', 'motorcycle_shop_cart_remove_collaterals' );
 
 /**
- * Short subtitle for cart line item.
+ * Get cart item subtitle (category + engine volume).
  *
  * @param WC_Product $product Product.
  * @return string
@@ -423,13 +423,162 @@ function motorcycle_shop_cart_item_subtitle( $product ) {
 		return '';
 	}
 
-	$short = $product->get_short_description();
-	if ( $short ) {
-		return wp_strip_all_tags( $short );
+	$result = array();
+
+	// Get primary product category with singular name
+	$terms = get_the_terms( $product->get_id(), 'product_cat' );
+	
+	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+		// Get the first term (primary category)
+		$term = reset( $terms );
+		
+		$category_name = $term->name;
+		// Simple transformation: remove plural suffix if present
+		$category_name = motorcycle_shop_singularize_category( $category_name );
+		
+		$result[] = esc_html( $category_name );
 	}
 
-	$specs = motorcycle_shop_get_product_specs( $product, 2 );
-	return ! empty( $specs ) ? implode( ', ', $specs ) : '';
+	// Get engine volume
+	$volume = motorcycle_shop_get_product_engine_volume( $product );
+	if ( $volume ) {
+		$result[] = esc_html( $volume );
+	}
+
+	return ! empty( $result ) ? implode( ', ', $result ) : '';
+}
+
+/**
+ * Convert category name to singular form.
+ *
+ * @param string $name Category name.
+ * @return string
+ */
+function motorcycle_shop_singularize_category( $name ) {
+	// Work with a copy for transformations
+	$result = $name;
+	$result_lower = mb_strtolower( $result );
+
+	// Replace adjectives (прилагательные) - anywhere in the string
+	$adjective_replacements = array(
+		'дорожные' => 'дорожный',
+		'кроссовые' => 'кроссовый',
+		'спортивные' => 'спортивный',
+		'туристические' => 'туристический',
+		'уличные' => 'уличный',
+		'внедорожные' => 'внедорожный',
+		'кастомные' => 'кастомный',
+		'детские' => 'детский',
+	);
+
+	foreach ( $adjective_replacements as $plural => $singular ) {
+		if ( mb_strpos( $result_lower, $plural ) !== false ) {
+			$result = preg_replace( '/(' . preg_quote( $plural, '/' ) . ')/iu', $singular, $result );
+			$result_lower = mb_strtolower( $result );
+			break;
+		}
+	}
+
+	// Replace nouns (существительные) - anywhere in the string
+	$noun_replacements = array(
+		'скутеры' => 'скутер',
+		'мотоциклы' => 'мотоцикл',
+		'квадроциклы' => 'квадроцикл',
+		'мопеды' => 'мопед',
+		'питбайки' => 'питбайк',
+		'эндуро' => 'эндуро',
+		'чопперы' => 'чоппер',
+		'круизеры' => 'круизер',
+		'минимото' => 'минимото',
+		'байки' => 'байк',
+	);
+
+	foreach ( $noun_replacements as $plural => $singular ) {
+		if ( mb_strpos( $result_lower, $plural ) !== false ) {
+			$result = preg_replace( '/(' . preg_quote( $plural, '/' ) . ')/iu', $singular, $result );
+			break;
+		}
+	}
+
+	return $result;
+}
+
+/**
+ * Get engine volume from product attributes.
+ *
+ * @param WC_Product $product Product.
+ * @return string
+ */
+function motorcycle_shop_get_product_engine_volume( $product ) {
+	if ( ! $product instanceof WC_Product ) {
+		return '';
+	}
+
+	// First, try to find attribute by label containing "объём", "объем" or "volume"
+	foreach ( $product->get_attributes() as $attribute ) {
+		if ( ! $attribute->get_visible() ) {
+			continue;
+		}
+
+		$label = wc_attribute_label( $attribute->get_name(), $product );
+		$slug = $attribute->get_name();
+
+		// Check if label or slug contains volume-related keywords
+		if ( stripos( $label, 'объём' ) !== false || 
+		     stripos( $label, 'объем' ) !== false || 
+		     stripos( $label, 'volume' ) !== false ||
+		     stripos( $slug, 'cc' ) !== false ||
+		     stripos( $slug, 'volume' ) !== false ) {
+			
+			if ( $attribute->is_taxonomy() ) {
+				$terms = wc_get_product_terms(
+					$product->get_id(),
+					$slug,
+					array( 'fields' => 'names' )
+				);
+				if ( ! empty( $terms ) ) {
+					return reset( $terms );
+				}
+			} else {
+				$options = $attribute->get_options();
+				if ( ! empty( $options ) ) {
+					return reset( $options );
+				}
+			}
+		}
+	}
+
+	// If not found by keywords, return first visible attribute value (fallback)
+	foreach ( $product->get_attributes() as $attribute ) {
+		if ( ! $attribute->get_visible() ) {
+			continue;
+		}
+
+		if ( $attribute->is_taxonomy() ) {
+			$terms = wc_get_product_terms(
+				$product->get_id(),
+				$attribute->get_name(),
+				array( 'fields' => 'names' )
+			);
+			if ( ! empty( $terms ) ) {
+				// Return first term if it looks like a volume (contains numbers)
+				$first_term = reset( $terms );
+				if ( preg_match( '/[0-9]/', $first_term ) ) {
+					return $first_term;
+				}
+			}
+		} else {
+			$options = $attribute->get_options();
+			if ( ! empty( $options ) ) {
+				$first_option = reset( $options );
+				if ( preg_match( '/[0-9]/', $first_option ) ) {
+					return $first_option;
+				}
+			}
+		}
+	}
+
+	return '';
 }
 
 /**

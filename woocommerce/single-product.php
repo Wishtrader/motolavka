@@ -16,5 +16,5 @@ while ( have_posts() ) :
 	wc_get_template_part( 'content', 'single-product' );
 endwhile;
 
-get_template_part( 'template-parts/home/form', 'form' );
+get_template_part( 'template-parts/catalog/form', 'form' );
 get_footer();

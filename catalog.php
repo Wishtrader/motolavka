@@ -11,14 +11,14 @@
 <section class="relative bg-black overflow-hidden">
 	<div class="relative h-[500px] md:h-[600px]">
 		<!-- Background Image -->
-		<div class="absolute inset-0 bg-[url('<?php echo get_template_directory_uri(); ?>/img/catalog-hero.png')] bg-cover bg-center"></div>
+		<div class="absolute inset-0 bg-[url('<?php the_field('catalog_hero-bg') ?>')] bg-cover bg-center"></div>
 		<div class="absolute inset-0 bg-black/60"></div>
 		
 		<!-- Content -->
 		<div class="relative w-full max-w-[1200px] mx-auto h-full my-14 h-full flex items-start mt-[140px]">
 			<div class="flex max-w-[712px] gap-8 w-full items-center">
 				<!-- Left Content -->
-				<div class="text-white w-full max-w-[680px]">
+				<div class="text-white w-full max-w-[680px] relative z-10">
 					<!-- Breadcrumb -->
 					<nav class="flex items-center gap-2 text-sm mb-[60px]">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
@@ -30,12 +30,12 @@
 					
 					<!-- Title -->
 					<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-6 leading-tight w-full">
-						Каталог мототехники, запчастей и аксессуаров
+						<?php the_field('catalog_heading') ?>
 					</h1>
 					
 					<!-- Description -->
 					<p class="text-gray-300 text-[16px] md:text-[18px] mb-10 leading-relaxed">
-						Подобрать нужную технику, расходники и комплектующие по категориям, брендам и основным параметрам
+						<?php the_field('catalog_description') ?>
 					</p>
 					
 					<!-- Button -->
@@ -43,7 +43,7 @@
 					motorcycle_shop_lead_modal_trigger(
 						array(
 							'source' => 'catalog',
-							'class'  => 'inline-block flex items-center justify-center bg-[#2A3038] text-white text-center max-h-[48px] px-8 py-4 rounded-[2px] w-full md:max-w-[285px] font-medium hover:bg-[#3C3C3C] transition-colors',
+							'class'  => 'inline-block flex items-center justify-center bg-[#2A3038] text-white text-center max-h-[48px] px-8 py-4 rounded-[2px] w-full md:max-w-[285px] font-medium hover:bg-[#3C3C3C] transition-colors border border-[#434C58] border-[1px]',
 						)
 					);
 					?>
@@ -51,7 +51,7 @@
 				
 				<!-- Right Image -->
 				<div class="hidden md:block absolute right-0 max-w-[30vw]">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/catalog-small.png" alt="Мотоцикл" class="w-full h-auto">
+					<img src="<?php the_field('catalog_hero-img') ?>" alt="Мотоцикл" class="w-full h-auto">
 				</div>
 			</div>
 		</div>
@@ -97,6 +97,6 @@
 
   </div>
 </section>
-<?php get_template_part( 'template-parts/home/form', 'form' ); ?>
+<?php get_template_part( 'template-parts/catalog/form', 'form' ); ?>
 
 <?php get_footer(); ?>

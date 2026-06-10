@@ -94,10 +94,6 @@
 					
 					<!-- Right side: Catalog, Cart, Menu -->
 					<div class="flex items-center gap-4">
-						<!-- Catalog Button -->
-						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="bg-[#FF6B00] text-white px-4 py-2 rounded text-sm font-medium">
-							Каталог
-						</a>
 						
 						<!-- Cart -->
 						<?php get_template_part( 'template-parts/header/cart-link', null, array( 'variant' => 'mobile' ) ); ?>
@@ -137,11 +133,6 @@
 					<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="block w-full bg-[#FF6B00] text-white text-center py-4 rounded-lg font-bold text-lg mb-6">
 						Каталог
 					</a>
-					
-					<!-- Search -->
-					<div class="mb-6">
-						<?php get_template_part( 'template-parts/header/search-form', null, array( 'variant' => 'mobile' ) ); ?>
-					</div>
 					
 					<!-- Menu Links -->
 					<nav class="space-y-4 mb-8">

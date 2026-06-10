@@ -81,22 +81,22 @@ $footer_category_links = motorcycle_shop_footer_category_links();
 					<h3 class="text-white text-lg font-bold mb-4">Контакты</h3>
 					<div class="space-y-4">
 						<div>
-							<p class="text-gray-400 text-sm mb-1">Телефон</p>
+							<p class="text-white text-sm mb-1">Телефон</p>
 							<a href="tel:+375293070603" class="text-white text-base font-medium hover:text-[#FF6B00] transition-colors">+375 29 307 06 03</a>
 						</div>
 
 						<div>
-							<p class="text-gray-400 text-sm mb-1">Email:</p>
+							<p class="text-white text-sm mb-1">Email:</p>
 							<a href="mailto:motolavkaby@yandex.by" class="text-white text-base hover:text-[#FF6B00] transition-colors">motolavkaby@yandex.by</a>
 						</div>
 
 						<div>
-							<p class="text-gray-400 text-sm mb-1">Адрес:</p>
+							<p class="text-white text-sm mb-1">Адрес:</p>
 							<p class="text-white text-base">г. Минск, ул. Глаголева 45, к.1</p>
 						</div>
 
 						<div>
-							<p class="text-gray-400 text-sm mb-1">Режим работы:</p>
+							<p class="text-white text-sm mb-1">Режим работы:</p>
 							<p class="text-white text-base font-medium">Пн-Пт с 9:00 до 19:00</p>
 						</div>
 					</div>
@@ -167,13 +167,13 @@ $footer_category_links = motorcycle_shop_footer_category_links();
 		<div>
 			<div class="max-w-[1200px] mx-auto px-2">
 				<div class="hidden md:flex items-center justify-between py-4">
-					<a href="<?php echo esc_url( $footer_privacy_url ); ?>" class="text-[#B8C0CC] text-sm hover:text-[#FF6B00] transition-colors">Политика конфиденциальности</a>
+					<a href="<?php echo esc_url( $footer_privacy_url ); ?>" class="text-[#B8C0CC] text-sm hover:text-[#B8C0CC] transition-colors">Политика конфиденциальности</a>
 					<p class="text-[#B8C0CC] text-sm">© Мотолавка, 2026. Все права защищены.</p>
-					<a href="<?php echo esc_url( $footer_cookie_url ); ?>" class="text-[#B8C0CC] text-sm hover:text-[#FF6B00] transition-colors">Политика обработки файлов cookie</a>
+					<a href="<?php echo esc_url( $footer_cookie_url ); ?>" class="text-[#B8C0CC] text-sm hover:text-[#B8C0CC] transition-colors">Политика обработки файлов cookie</a>
 				</div>
 
 				<div class="md:hidden py-4 text-center">
-					<p class="text-[#2B2B2F] text-sm mb-2">© Мотолавка, 2026. Все права защищены.</p>
+					<p class="text-[#B8C0CC] text-sm mb-2">© Мотолавка, 2026. Все права защищены.</p>
 					<div class="space-y-1">
 						<a href="<?php echo esc_url( $footer_privacy_url ); ?>" class="block text-[#B8C0CC] text-sm hover:text-[#FF6B00] transition-colors">Политика конфиденциальности</a>
 						<a href="<?php echo esc_url( $footer_cookie_url ); ?>" class="block text-[#B8C0CC] text-sm hover:text-[#FF6B00] transition-colors">Политика обработки файлов cookie</a>

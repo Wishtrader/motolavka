@@ -17,17 +17,17 @@ get_header();
 			<div class="hidden md:flex items-center gap-[20px]">
 				<div class="flex-1">
 					<h1 class="text-white sm:text-[34px] md:text-[52px] font-bold mb-[30px] leading-[1.1]">
-						Подберите технику<br>и запчасти под<br>свои задачи
+						<?php the_field('hero_heading') ?>	
 					</h1>
 					<p class="text-white text-[20px] mb-8 leading-relaxed">
-						Каталог мотоциклов, квадрациклов, скутеров, запчастей <br>и аксессуаров
+						<?php the_field('hero_subtitle') ?>
 					</p>
 					<div class="flex gap-[20px] w-full">
 						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="flex-1 bg-[#FF6B00] text-white text-center px-8 py-4 rounded-[2px] font-medium hover:bg-[#E55A00] transition-colors">
 							Смотреть каталог
 						</a>
-						<button type="button" data-lead-modal-open data-lead-source="hero" class="flex-1 bg-[#2C2C2C] text-center text-white px-8 py-4 rounded-[2px] font-medium hover:bg-[#3C3C3C] transition-colors">
-							Оставить заявку
+						<button type="button" data-lead-modal-open data-lead-source="hero" class="flex-1 bg-[#2C2C2C] text-center text-white px-8 py-4 rounded-[2px] font-medium hover:bg-[#3C3C3C] transition-colors border border-[#434C58] border-[1px]">
+							Получить консультацию
 						</button>
 					</div>
 				</div>

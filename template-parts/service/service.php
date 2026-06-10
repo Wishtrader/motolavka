@@ -1,20 +1,20 @@
 <?php
 $cards = [
-  ['img' => get_template_directory_uri() . '/img/s5.svg', 'title' => 'Диагностика', 'description' => 'Помогаем оценить состояние техники и понять, на что обратить внимание в первую очередь.'],
-  ['img' => get_template_directory_uri() . '/img/s6.svg', 'title' => 'Обслуживание', 'description' => 'Подскажем по базовым сервисным работам, регулярному уходу и расходным материалам.'],
-  ['img' => get_template_directory_uri() . '/img/s7.svg', 'title' => 'Подбор запчастей', 'description' => 'Помогаем гайьт подходящие детали под конкретную модель техники и задачу.'],
-  ['img' => get_template_directory_uri() . '/img/s8.svg', 'title' => 'Консультации', 'description' => 'Отвечаем на вопросы по эксплуатации, совместимости и дальнейшему обслуживанию.'],
+  ['img' => get_field('service-card1_icon'), 'title' => get_field('service-card1_heading'), 'description' => get_field('service-card1_description')],
+  ['img' => get_field('service-card2_icon'), 'title' => get_field('service-card2_heading'), 'description' => get_field('service-card2_description')],
+  ['img' => get_field('service-card3_icon'), 'title' => get_field('service-card3_heading'), 'description' => get_field('service-card3_description')],
+  ['img' => get_field('service-card4_icon'), 'title' => get_field('service-card4_heading'), 'description' => get_field('service-card4_description')],
 ];
 ?>
 
 <section id="full-services" class="w-full py-10 px-[10px] md:px-0">
   <div class="flex flex-col max-w-[1200px] mx-auto gap-[20px]">
     <h2 class="text-[28px] md:text-[40px] max-w-[800px] text-white font-bold leading-[1.15]">
-      Сервисная поддержка для техники, запчастей и эксплуатации
+      <?php the_field('heading') ?>
     </h2>
 
     <p class="text-[#F5F7FA] max-w-[800px] text-[16px] md:text-[18px] leading-relaxed font-normal">
-      Если нужно понять текущее состояние техники, подобрать расходники, уточнить совместимость деталей или разобраться с базовыми вопросами обслуживания, мы поможем сориентироваться и подобрать подходящее решение.
+    <?php the_field('description') ?>
     </p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px] mt-10">

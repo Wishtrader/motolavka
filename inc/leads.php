@@ -8,6 +8,20 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Validate Belarus phone by strict format: +375-XX-XXX-XX-XX
+ *
+ * @param string $phone Raw user input.
+ * @return bool
+ */
+function motorcycle_shop_is_valid_phone_by_format( $phone ) {
+	$phone  = trim( (string) $phone );
+	$digits = preg_replace( '/[^\d]/', '', $phone );
+
+	return strlen( $digits ) === 12 && strpos( $digits, '375' ) === 0;
+}
+
+
+/**
  * Register private post type for stored lead submissions.
  */
 function motorcycle_shop_register_lead_post_type() {
@@ -181,6 +195,34 @@ function motorcycle_shop_lead_scripts() {
 add_action( 'wp_enqueue_scripts', 'motorcycle_shop_lead_scripts', 35 );
 
 /**
+ * Enqueue contact form script on contact page.
+ */
+function motorcycle_shop_contact_scripts() {
+	if ( is_admin() ) {
+		return;
+	}
+
+	if ( ! is_page_template( 'contact.php' ) && ! is_page( 'contact' ) ) {
+		return;
+	}
+
+	$script_path = get_template_directory() . '/js/contact.js';
+
+	if ( ! file_exists( $script_path ) ) {
+		return;
+	}
+
+	wp_enqueue_script(
+		'motorcycle-shop-contact-form',
+		get_template_directory_uri() . '/js/contact.js',
+		array(),
+		(string) filemtime( $script_path ),
+		true
+	);
+}
+add_action( 'wp_enqueue_scripts', 'motorcycle_shop_contact_scripts', 36 );
+
+/**
  * Render lead modal in the footer.
  */
 function motorcycle_shop_render_lead_modal() {
@@ -281,9 +323,11 @@ function motorcycle_shop_render_inline_lead_form( $source = 'home-form' ) {
 				name="lead_phone"
 				required
 				autocomplete="tel"
+				inputmode="tel"
 				class="w-full text-white text-sm font-normal bg-[#2A3038] border border-[#434C58] p-[20px] rounded-[2px] placeholder:text-white focus:outline-none focus:ring-2 focus:ring-[#FF6B00]"
-				placeholder="Телефон"
+				placeholder="+375 (XX) XXX-XX-XX"
 			/>
+
 
 			<label class="inline-flex items-start gap-3 cursor-pointer">
 				<input type="checkbox" name="lead_privacy" value="1" class="peer sr-only" required checked />
@@ -300,7 +344,7 @@ function motorcycle_shop_render_inline_lead_form( $source = 'home-form' ) {
 
 			<button
 				type="submit"
-				class="flex w-full flex-1 max-h-[52px] md:max-w-[285px] mt-[32px] items-center justify-center rounded-[2px] bg-[#FF6B00] text-[#F5F7FA] px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors"
+				class="flex w-full flex-1 max-h-[52px] md:max-w-[285px] mt-[32px] items-center justify-center rounded-[2px] bg-[#FF6B00] text-[#F5F7FA] px-4 py-[16px] text-base font-semibold hover:bg-[#E55A00] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 			>
 				Отправить заявку
 			</button>
@@ -348,16 +392,15 @@ function motorcycle_shop_handle_lead_submission() {
 		motorcycle_shop_lead_error_redirect( 'name' );
 	}
 
-	$digits = preg_replace( '/\D+/', '', $phone );
-
-	if ( strlen( $digits ) < 7 ) {
+	if ( ! motorcycle_shop_is_valid_phone_by_format( $phone ) ) {
 		motorcycle_shop_lead_error_redirect( 'phone' );
 	}
+
 
 	$title = sprintf(
 		'%s — %s',
 		$name,
-		$phone
+		trim( $phone )
 	);
 
 	$author_id = 1;
@@ -404,10 +447,12 @@ function motorcycle_shop_handle_lead_submission() {
 			$admin_email,
 			sprintf( '[Мотолавка] Новая заявка: %s', $name ),
 			sprintf(
-				"Имя: %s\nТелефон: %s\nИсточник: %s\n\nПросмотр в админке: %s",
+				"Имя: %s\nТелефон: %s\nИсточник: %s\nIP адрес: %s\nДата: %s\n\nПросмотр в админке: %s",
 				$name,
 				$phone,
 				$source,
+				$_SERVER['REMOTE_ADDR'] ?? 'Неизвестно',
+				current_time( 'd.m.Y H:i:s' ),
 				admin_url( 'post.php?post=' . $post_id . '&action=edit' )
 			)
 		);
@@ -474,3 +519,149 @@ function motorcycle_shop_lead_column_content( $column, $post_id ) {
 	}
 }
 add_action( 'manage_ms_lead_posts_custom_column', 'motorcycle_shop_lead_column_content', 10, 2 );
+
+/**
+ * Set proper email headers for Gmail compatibility.
+ */
+function motorcycle_shop_set_email_headers( $headers ) {
+	$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+	$headers = array(
+		'From' => 'Мотолавка <noreply@' . $host . '>',
+		'Content-Type' => 'text/plain; charset=UTF-8',
+	);
+	return $headers;
+}
+add_filter( 'wp_mail_headers', 'motorcycle_shop_set_email_headers' );
+
+/**
+ * Set proper "From" email address for Gmail compatibility.
+ */
+function motorcycle_shop_set_email_from( $from_email ) {
+	$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+	return 'noreply@' . $host;
+}
+add_filter( 'wp_mail_from', 'motorcycle_shop_set_email_from' );
+
+/**
+ * Set proper "From" name for Gmail compatibility.
+ */
+function motorcycle_shop_set_email_from_name( $from_name ) {
+	return 'Мотолавка';
+}
+add_filter( 'wp_mail_from_name', 'motorcycle_shop_set_email_from_name' );
+
+/**
+ * Handle contact page form submission (direct POST, no modal).
+ */
+function motorcycle_shop_handle_contact_form_submission() {
+	if ( 'POST' !== ( isset( $_SERVER['REQUEST_METHOD'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ) : '' ) ) {
+		return;
+	}
+
+	if ( empty( $_POST['contact_source'] ) || 'contact-page' !== $_POST['contact_source'] ) {
+		return;
+	}
+
+	$nonce = isset( $_POST['contact_nonce'] ) ? wp_unslash( $_POST['contact_nonce'] ) : '';
+
+	if ( ! is_string( $nonce ) || ! wp_verify_nonce( $nonce, 'motorcycle_shop_contact_form' ) ) {
+		motorcycle_shop_contact_error_redirect( 'invalid' );
+	}
+
+	$name   = isset( $_POST['contact_name'] ) ? sanitize_text_field( wp_unslash( $_POST['contact_name'] ) ) : '';
+	$phone  = isset( $_POST['contact_phone'] ) ? sanitize_text_field( wp_unslash( $_POST['contact_phone'] ) ) : '';
+	$agree  = ! empty( $_POST['contact_privacy'] );
+
+	if ( ! $agree ) {
+		motorcycle_shop_contact_error_redirect( 'privacy' );
+	}
+
+	if ( strlen( $name ) < 2 ) {
+		motorcycle_shop_contact_error_redirect( 'name' );
+	}
+
+	if ( ! motorcycle_shop_is_valid_phone_by_format( $phone ) ) {
+		motorcycle_shop_contact_error_redirect( 'phone' );
+	}
+
+
+	// Save to database as lead
+	$title = sprintf(
+		'%s — %s',
+		$name,
+		trim( $phone )
+	);
+
+	$author_id = 1;
+	$admins    = get_users(
+		array(
+			'role'   => 'administrator',
+			'number' => 1,
+		)
+	);
+
+	if ( ! empty( $admins ) ) {
+		$author_id = (int) $admins[0]->ID;
+	}
+
+	$GLOBALS['motorcycle_shop_submitting_lead'] = true;
+	$previous_user_id                           = get_current_user_id();
+	wp_set_current_user( $author_id );
+
+	$post_id = wp_insert_post(
+		array(
+			'post_type'   => 'ms_lead',
+			'post_title'  => $title,
+			'post_status' => 'publish',
+			'post_author' => $author_id,
+		),
+		true
+	);
+
+	unset( $GLOBALS['motorcycle_shop_submitting_lead'] );
+	wp_set_current_user( $previous_user_id );
+
+	if ( is_wp_error( $post_id ) ) {
+		motorcycle_shop_contact_error_redirect( 'save' );
+	}
+
+	update_post_meta( $post_id, '_lead_name', $name );
+	update_post_meta( $post_id, '_lead_phone', $phone );
+	update_post_meta( $post_id, '_lead_source', 'contact-page' );
+
+	// Send email to admin
+	$admin_email = get_option( 'admin_email' );
+
+	if ( $admin_email ) {
+		$subject = sprintf( '[Мотолавка] Новая заявка с контактной страницы: %s', $name );
+		$message = sprintf(
+			"Имя: %s\nТелефон: %s\nИсточник: Контактная страница\n\nIP адрес: %s\nДата: %s",
+			$name,
+			$phone,
+			$_SERVER['REMOTE_ADDR'] ?? 'Неизвестно',
+			current_time( 'd.m.Y H:i:s' )
+		);
+
+		wp_mail( $admin_email, $subject, $message );
+	}
+
+	// Redirect to success page
+	$url = remove_query_arg( 'contact_error', wp_get_referer() );
+	$url = add_query_arg( 'contact_sent', '1', $url );
+	wp_safe_redirect( $url );
+	exit;
+}
+add_action( 'init', 'motorcycle_shop_handle_contact_form_submission', 1 );
+
+/**
+ * Redirect back with contact form error.
+ *
+ * @param string $code Error code.
+ */
+function motorcycle_shop_contact_error_redirect( $code ) {
+	$referer = wp_get_referer() ? wp_get_referer() : home_url( '/contact' );
+	$referer = remove_query_arg( 'contact_sent', $referer );
+	$url     = add_query_arg( 'contact_error', $code, $referer );
+	wp_safe_redirect( $url );
+	exit;
+}
