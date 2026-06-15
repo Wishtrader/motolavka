@@ -18,10 +18,10 @@ if ( $comment_field ) {
 }
 ?>
 
-<section class="bg-[#2A3038] border border-[#434C58]/50 rounded-[2px] p-6 md:p-8">
+<section class="bg-[#2A3038] border border-[#434C58] rounded-[2px] p-2 md:px-[30px] md:py-[20px]">
 	<div class="flex items-center gap-3 mb-6">
 		<span class="flex items-center justify-center w-8 h-8 rounded-full bg-[#FF6B00] text-white text-sm font-bold shrink-0" aria-hidden="true">1</span>
-		<h2 class="text-white text-lg md:text-xl font-bold">Контактные данные</h2>
+		<h2 class="text-white text-[20px] md:text-[24px] font-normal">Контактные данные</h2>
 	</div>
 
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>

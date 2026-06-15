@@ -55,7 +55,7 @@ if ( ! wp_doing_ajax() ) {
 
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
-		<p class="text-white/90 text-xs md:text-sm leading-relaxed text-center">
+		<p class="text-white/90 text-xs md:text-[12px] leading-relaxed text-center">
 			После отправки заказа мы свяжемся с вами для подтверждения наличия и деталей получения. Оплата производится после подтверждения.
 		</p>
 

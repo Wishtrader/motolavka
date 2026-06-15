@@ -16,21 +16,19 @@
 		<!-- Content -->
 		<div class="relative w-full max-w-[1200px] mx-auto 2xl:mt-0 fluid-px">
         <!-- Breadcrumb -->
-            <nav class="flex items-center gap-2 text-sm mb-[60px] md:mt-[80px]">
+            <nav class="flex items-center gap-2 text-sm mb-[60px] mt-[80px]">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
-                <svg class="w-4 h-4 text-[#FB8A3C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
+                <img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
                 <span class="text-white">О компании</span>
             </nav>  
 			<!-- Desktop Version -->
 			<div class="hidden md:grid grid-cols-2 items-center gap-[20px]">
 				<!-- Left Content -->
 				<div class="flex-1">
-					<h1 class="text-white sm:text-[34px] fluid-h1 font-bold mb-[30px] leading-[1.15]">
+					<h1 class="text-white sm:text-[34px] fluid-h1 font-bold mb-[30px] leading-[1.2]">
 					<?php the_field('about_heading') ?>
 					</h1>
-					<p class="text-[#B8C0CC] text-[18px] mb-8 leading-[1.6]">
+					<p class="text-[#B8C0CC] text-[18px] mb-8 md:leading-[1.6]">
 						<?php the_field('about_description') ?>
 					</p>
 					<div class="flex gap-[20px] w-full">
@@ -41,7 +39,7 @@
 						motorcycle_shop_lead_modal_trigger(
 							array(
 								'source' => 'about',
-								'class'  => 'flex-1 bg-[#2C2C2C] text-center text-white px-8 py-4 rounded-[2px] font-medium hover:bg-[#3C3C3C] transition-colors',
+								'class'  => 'flex-1 bg-[#2C2C2C] text-center text-white px-8 py-4 rounded-[2px] border border-[1px] border-[#434C58] font-medium hover:bg-[#3C3C3C] transition-colors',
 							)
 						);
 						?>
@@ -52,10 +50,10 @@
 			<!-- Mobile Version -->
 			<div class="md:hidden h-full px-[10px] mt-[40px] relative">
 				<div class="relative">
-					<h1 class="text-white text-[34px] font-bold mb-6 leading-tight">
+					<h1 class="text-white text-[34px] font-bold mb-6 leading-[1.2]">
 						<?php the_field('about_heading') ?>
 					</h1>
-					<p class="text-gray-300 text-[20px] mb-8 leading-relaxed">
+					<p class="text-gray-300 text-[20px] mb-8 leading-[1.4]">
 						<?php the_field('about_description') ?>
 					</p>
 					<div class="space-y-5 mb-10">
@@ -73,30 +71,7 @@
 					</div>
 				</div>
 				
-				<?php
-				$categories_mobile = get_terms( array(
-					'taxonomy' => 'product_cat',
-					'hide_empty' => false,
-					'number' => 4,
-				) );
-				if ( ! empty( $categories_mobile ) && ! is_wp_error( $categories_mobile ) ) :
-				?>
-				<div class="space-y-4">
-					<?php foreach ( $categories_mobile as $cat ) :
-						$thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
-						$image_url = $thumbnail_id ? wp_get_attachment_url( $thumbnail_id ) : get_template_directory_uri() . '/img/placeholder.png';
-					?>
-					<a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="group relative overflow-hidden rounded-lg block">
-						<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $cat->name ); ?>" class="w-full h-[200px] object-cover transition-transform duration-300 group-hover:scale-110">
-						<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-						<div class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
-							<span class="text-white text-base font-medium"><?php echo esc_html( $cat->name ); ?></span>
-							<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-						</div>
-					</a>
-					<?php endforeach; ?>
-				</div>
-				<?php endif; ?>
+				
 			</div>
 		</div>
 	</div>

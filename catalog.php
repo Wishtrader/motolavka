@@ -9,22 +9,20 @@
 
 <!-- Hero Section -->
 <section class="relative bg-black overflow-hidden">
-	<div class="relative h-[500px] md:h-[600px]">
+	<div class="relative md:h-[600px]">
 		<!-- Background Image -->
 		<div class="absolute inset-0 bg-[url('<?php the_field('catalog_hero-bg') ?>')] bg-cover bg-center"></div>
 		<div class="absolute inset-0 bg-black/60"></div>
 		
 		<!-- Content -->
-		<div class="relative w-full max-w-[1200px] mx-auto h-full flex items-start mt-[140px] fluid-px">
+		<div class="relative w-full max-w-[1200px] mx-auto h-full flex items-start md:mt-[140px] fluid-px">
 			<div class="flex max-w-[712px] gap-8 w-full items-center">
 				<!-- Left Content -->
 				<div class="text-white w-full max-w-[680px] relative z-10">
 					<!-- Breadcrumb -->
-					<nav class="flex items-center gap-2 text-sm mb-[60px]">
+					<nav class="flex items-center gap-2 text-sm mb-[60px] mt-[80px] md:mt-[50px]">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
-						<svg class="w-4 h-4 text-[#FB8A3C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-						</svg>
+						<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
 						<span class="text-white">Каталог</span>
 					</nav>
 					

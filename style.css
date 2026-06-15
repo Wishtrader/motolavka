@@ -42,6 +42,17 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 .fluid-logo { height: clamp(40px, calc(40px + 20 * (100vw - 1024px) / 176), 60px); }
 .fluid-cat-btn { width: clamp(130px, calc(130px + 50 * (100vw - 1024px) / 176), 180px); }
 
+/* Process carousel (mobile) */
+.proces-item {
+  width: calc((100% - 20px) / 1.3);
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .proces-item { width: auto; }
+}
+#popular-cat .overflow-x-auto::-webkit-scrollbar { display: none; }
+#popular-cat .overflow-x-auto { scrollbar-width: none; -ms-overflow-style: none; }
+
 /* Brands carousel (mobile) */
 .brand-item {
   width: calc((100% - 40px) / 3);

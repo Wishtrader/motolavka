@@ -8,32 +8,32 @@
     </div>
   </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-5 mt-[40px] mb-[40px]">    
-    <div class="flex w-full flex-col gap-[20px]">
+    <div class="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-5 mt-[40px] mb-[40px] md:grid-cols-4">
+    <div class="proces-item snap-start flex flex-col gap-[20px]">
       <div class="flex">
         <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4">01</h1>
-        <img class="hidden lg:block max-w-[230px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
+        <img class="lg:block max-w-[180px] md:max-w-[230px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
       </div>
       <p class="text-lg font-semibold text-white"><?php the_field('sec4-title1') ?></p>
     </div>
 
-      <div class="flex w-full flex-1 flex-col gap-[20px]">
+      <div class="proces-item snap-start flex flex-col gap-[20px]">
         <div class="flex">
           <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4">02</h1>
-          <img class="hidden lg:block max-w-[220px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
+          <img class="lg:block max-w-[180px] md:max-w-[230px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
         </div>
         <p class="text-lg font-semibold text-white"><?php the_field('sec4-title2') ?></p>
       </div>
 
-      <div class="flex w-full flex-1 flex-col gap-[20px]">
+      <div class="proces-item snap-start flex flex-col gap-[20px]">
         <div class="flex">
           <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4">03</h1>
-          <img class="hidden lg:block max-w-[220px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
+          <img class="lg:block max-w-[180px] md:max-w-[230px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
         </div>
         <p class="text-lg font-semibold text-white"><?php the_field('sec4-title3') ?></p>
       </div>
 
-      <div class="flex w-full flex-1 flex-col gap-[20px]">
+      <div class="proces-item snap-start flex flex-col gap-[20px]">
         <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4">04</h1>
         <p class="text-lg font-semibold text-white"><?php the_field('sec4-title4') ?></p>
       </div>

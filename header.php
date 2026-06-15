@@ -42,9 +42,9 @@
 </head>
 
 <body class="bg-[#171A1F]">
-	<header class="absolute flex flex-col w-full top-0 z-50">
+	<header class="absolute flex flex-col w-full top-0 z-50 bg-[url('<?php echo get_template_directory_uri(); ?>/img/header-bg.png')] bg-cover bg-center pb-[40px]">
 		<!-- Top Bar -->
-		<div class="text-white text-sm my-[20px]">
+		<div class="hidden md:flex text-white text-sm my-[20px]">
 			<div class="max-w-[1200px] h-[42px] mx-auto flex items-center justify-center gap-6 fluid-px">
 				<span class="hidden sm:inline">Пн-Пт с 9:00 до 19:00</span>
 				<div class="hidden sm:block h-[42px] w-[1px] bg-[#B8C0CC]"></div>
@@ -139,8 +139,8 @@
 						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="block <?php echo is_page('catalog') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Каталог</a>
 						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="block <?php echo is_page('about') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">О компании</a>
 						<a href="<?php echo esc_url( home_url( '/shipping-and-payment' ) ); ?>" class="block <?php echo is_page('shipping-and-payment') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Доставка и Оплата</a>
-						<a href="#" class="block text-white text-lg">Сервис</a>
-						<a href="#" class="block text-white text-lg">Контакты</a>
+						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="block text-white text-lg">Сервис</a>
+						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="block text-white text-lg">Контакты</a>
 					</nav>
 					
 					<!-- Contacts Section -->

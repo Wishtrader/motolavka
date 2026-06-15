@@ -39,9 +39,7 @@ $last_index  = count( $breadcrumbs ) - 1;
 			<nav class="flex flex-wrap items-center gap-2 text-sm mt-10 mb-8 md:mb-[60px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
 				<?php foreach ( $breadcrumbs as $index => $crumb ) : ?>
 					<?php if ( $index > 0 ) : ?>
-						<svg class="w-4 h-4 text-[#FB8A3C] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-						</svg>
+						<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
 					<?php endif; ?>
 
 					<?php if ( $index === $last_index || empty( $crumb['url'] ) ) : ?>

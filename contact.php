@@ -22,9 +22,7 @@
 					<!-- Breadcrumb -->
 					<nav class="flex items-center gap-2 text-sm mb-[60px] md:mt-[50px]">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
-						<svg class="w-4 h-4 text-[#FB8A3C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-						</svg>
+						<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
 						<span class="text-white">Контакты</span>
 					</nav>
 					
