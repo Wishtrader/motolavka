@@ -826,6 +826,11 @@ function motorcycle_shop_checkout_notice_styles() {
 			flex: 1 1 auto;
 			min-height: 108px;
 		}
+		@media (max-width: 767px) {
+			[data-checkout-delivery] [data-delivery-column="pickup"] {
+				display: contents !important;
+			}
+		}
 	</style>
 	<?php
 }

@@ -56,7 +56,7 @@ $show_delivery  = 'delivery' === $default_type;
 
 	<input type="hidden" name="motorcycle_delivery_type" value="<?php echo esc_attr( $default_type ); ?>" data-delivery-type-input />
 
-	<div class="grid grid-cols-2 gap-4 items-stretch" data-delivery-grid role="radiogroup" aria-label="<?php esc_attr_e( 'Способ получения заказа', 'motorcycle-shop' ); ?>">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch" role="radiogroup" aria-label="<?php esc_attr_e( 'Способ получения заказа', 'motorcycle-shop' ); ?>">
 		<?php foreach ( $options as $type => $option ) : ?>
 			<?php
 			$is_active   = $type === $default_type;
@@ -72,10 +72,10 @@ $show_delivery  = 'delivery' === $default_type;
 				$field['custom_attributes']['disabled'] = 'disabled';
 			}
 			?>
-			<div class="flex flex-col gap-4 min-w-0 w-full" data-delivery-column="<?php echo esc_attr( $type ); ?>">
+			<div class="flex flex-col gap-4 min-w-0 w-full <?php echo $type === 'delivery' ? 'order-2' : ''; ?>" data-delivery-column="<?php echo esc_attr( $type ); ?>">
 				<button
 					type="button"
-					class="delivery-option relative flex flex-col items-start text-left w-full flex-1 min-h-[108px] p-5 md:p-6 rounded-[2px] border-2 transition-colors <?php echo esc_attr( $card_class ); ?>"
+					class="delivery-option relative flex flex-col items-start text-left w-full flex-1 min-h-[108px] p-5 md:p-6 rounded-[2px] border-2 transition-colors <?php echo esc_attr( $card_class ); ?> <?php echo $type === 'pickup' ? 'order-1' : ''; ?>"
 					data-delivery-option="<?php echo esc_attr( $type ); ?>"
 					role="radio"
 					aria-checked="<?php echo $is_active ? 'true' : 'false'; ?>"
@@ -89,7 +89,7 @@ $show_delivery  = 'delivery' === $default_type;
 
 				<?php if ( $field ) : ?>
 					<div
-						class="w-full min-w-0 shrink-0 <?php echo $show_delivery ? '' : 'hidden'; ?>"
+						class="w-full min-w-0 shrink-0 <?php echo $show_delivery ? '' : 'hidden'; ?> <?php echo $type === 'pickup' ? 'order-3' : ''; ?>"
 						data-delivery-field="<?php echo esc_attr( $type ); ?>"
 					>
 						<?php woocommerce_form_field( $field_key, $field, $checkout->get_value( $field_key ) ); ?>
