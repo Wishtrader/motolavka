@@ -7,6 +7,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$checkout_contacts = motorcycle_shop_get_contacts( 'checkout' );
+
 $chosen_methods = WC()->session ? WC()->session->get( 'chosen_shipping_methods', array() ) : array();
 $packages       = WC()->shipping()->get_packages();
 $has_wc_rates   = false;
@@ -30,10 +32,14 @@ if ( ! empty( $chosen_methods[0] ) && ! empty( $rates[ $chosen_methods[0] ] ) ) 
 	}
 }
 
+$pickup_address = $checkout_contacts['address'];
+// Extract city from address (everything before first comma).
+$pickup_city = trim( explode( ',', $pickup_address )[0] );
+
 $options = array(
 	'pickup'   => array(
 		'title'       => 'Самовывоз из салона',
-		'description' => 'Бесплатно. Минск, ул.Руссиянова, 3',
+		'description' => 'Бесплатно. ' . $pickup_address,
 		'field_key'   => 'billing_city',
 	),
 	'delivery' => array(
@@ -100,8 +106,8 @@ $show_delivery  = 'delivery' === $default_type;
 	</div>
 
 	<div data-pickup-address-fields class="<?php echo $show_delivery ? 'hidden' : ''; ?>">
-		<input type="hidden" name="billing_city" value="Минск" data-pickup-city <?php disabled( $show_delivery ); ?> />
-		<input type="hidden" name="billing_address_1" value="Самовывоз: ул.Руссиянова, 3" data-pickup-address <?php disabled( $show_delivery ); ?> />
+		<input type="hidden" name="billing_city" value="<?php echo esc_attr( $pickup_city ); ?>" data-pickup-city <?php disabled( $show_delivery ); ?> />
+		<input type="hidden" name="billing_address_1" value="Самовывоз: <?php echo esc_attr( $pickup_address ); ?>" data-pickup-address <?php disabled( $show_delivery ); ?> />
 	</div>
 
 	<?php if ( $has_wc_rates ) : ?>

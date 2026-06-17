@@ -1,4 +1,6 @@
-<?php ?>
+<?php
+$header_contacts = motorcycle_shop_get_contacts( 'header' );
+?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -46,11 +48,11 @@
 		<!-- Top Bar -->
 		<div class="hidden md:flex text-white text-sm my-[20px]">
 			<div class="max-w-[1200px] h-[42px] mx-auto flex items-center justify-center gap-6 fluid-px">
-				<span class="hidden sm:inline">Пн-Пт с 9:00 до 19:00</span>
+				<span class="hidden sm:inline"><?php echo esc_html( $header_contacts['worktime'] ); ?></span>
 				<div class="hidden sm:block h-[42px] w-[1px] bg-[#B8C0CC]"></div>
 				<span>Доставка по Беларуси</span>
 				<div class="hidden sm:block h-[42px] w-[1px] bg-[#B8C0CC]"></div>
-				<a href="tel:+375293070603" class="hover:text-[#FB8A3C]">+375 29 307 06 03</a>
+				<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $header_contacts['phone'] ) ); ?>" class="hover:text-[#FB8A3C]"><?php echo esc_html( $header_contacts['phone'] ); ?></a>
 			</div>
 		</div>
 		
@@ -150,22 +152,22 @@
 						<div class="space-y-4">
 							<div>
 								<p class="text-gray-400 text-sm mb-1">Телефон</p>
-								<a href="tel:+375293070603" class="text-white text-lg font-medium">+375 29 307 06 03</a>
+								<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $header_contacts['phone'] ) ); ?>" class="text-white text-lg font-medium"><?php echo esc_html( $header_contacts['phone'] ); ?></a>
 							</div>
 							
 							<div>
 								<p class="text-gray-400 text-sm mb-1">Email:</p>
-								<a href="mailto:motolavkaby@yandex.by" class="text-white text-lg">motolavkaby@yandex.by</a>
+								<a href="mailto:<?php echo esc_attr( $header_contacts['email'] ); ?>" class="text-white text-lg"><?php echo esc_html( $header_contacts['email'] ); ?></a>
 							</div>
 							
 							<div>
 								<p class="text-gray-400 text-sm mb-1">Адрес:</p>
-								<p class="text-white text-base">г. Минск, ул. Руссиянова, д. 3, корп. 1, ком. 326-А/69</p>
+								<p class="text-white text-base"><?php echo esc_html( $header_contacts['address'] ); ?></p>
 							</div>
 							
 							<div>
 								<p class="text-gray-400 text-sm mb-1">Режим работы:</p>
-								<p class="text-white text-lg font-medium">Пн-Пт с 9:00 до 19:00</p>
+								<p class="text-white text-lg font-medium"><?php echo esc_html( $header_contacts['worktime'] ); ?></p>
 							</div>
 						</div>
 					</div>

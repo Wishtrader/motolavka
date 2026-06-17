@@ -5,7 +5,10 @@
  */
 ?>
 
-<?php get_header(); ?>
+<?php get_header();
+
+$contact_page_contacts = motorcycle_shop_get_contacts( 'contact' );
+?>
 
 <!-- Hero Section -->
 <section class="relative overflow-hidden">
@@ -212,11 +215,11 @@ $theme_uri = get_template_directory_uri();
 		<!-- Map -->
 		<div class="w-full h-[320px] md:h-[400px] overflow-hidden">
 			<iframe
-				src="https://yandex.ru/map-widget/v1/?ll=27.483255%2C53.884906&amp;z=16&amp;pt=27.483255%2C53.884906%2Cpm2rdm&amp;l=map"
+				src="<?php echo esc_url( $contact_page_contacts['map_url'] ); ?>"
 				class="w-full h-full border-0"
 				allowfullscreen
 				loading="lazy"
-				title="Карта — г. Минск, ул. Глаголева, д. 45, к. 1"
+				title="Карта — <?php echo esc_attr( $contact_page_contacts['address'] ); ?>"
 			></iframe>
 		</div>
 	</div>

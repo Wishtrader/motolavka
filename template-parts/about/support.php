@@ -79,7 +79,7 @@
 			</div>
 
 			<!-- CTA Button -->
-			<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="inline-flex items-center justify-center bg-[#F97316] text-white text-[16px] font-medium px-8 py-[14px] rounded hover:bg-[#FB8A3C] transition-colors max-w-[220px]">
+			<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="inline-flex items-center justify-center bg-[#F97316] text-white text-[16px] font-normal px-8 py-[14px] rounded-[2px] hover:bg-[#FB8A3C] transition-colors md:w-[285px] md:h-[52px]">
 				Перейти в каталог
 			</a>
 		</div>

@@ -203,3 +203,63 @@ require get_template_directory() . '/inc/cookies.php';
  */
 require get_template_directory() . '/inc/leads.php';
 
+/**
+ * Get contact data from the "Контакты" page ACF fields.
+ *
+ * Returns an associative array with keys: phone, email, worktime, address, map_url.
+ * Falls back to hardcoded defaults if ACF or the page is missing.
+ *
+ * @param string $context Optional context ('header', 'footer', etc.) for future per-context overrides.
+ * @return array
+ */
+function motorcycle_shop_get_contacts( $context = '' ) {
+	$defaults = array(
+		'phone'    => '+375 29 307 06 03',
+		'email'    => 'motolavkaby@yandex.by',
+		'worktime' => 'Пн-Пт с 9:00 до 19:00',
+		'address'  => 'г. Минск, ул. Глаголева 45, к.1',
+		'map_url'  => 'https://yandex.ru/map-widget/v1/?ll=27.483255%2C53.884906&z=16&pt=27.483255%2C53.884906%2Cpm2rdm&l=map',
+	);
+
+	if ( ! function_exists( 'get_field' ) ) {
+		return $defaults;
+	}
+
+	// Find the Contact page by template.
+	$contact_page = get_page_by_path( 'contact' );
+	if ( ! $contact_page ) {
+		$args = array(
+			'post_type'      => 'page',
+			'meta_key'       => '_wp_page_template',
+			'meta_value'     => 'contact.php',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+		);
+		$query = new WP_Query( $args );
+		if ( $query->have_posts() ) {
+			$contact_page_id = $query->posts[0];
+		}
+		wp_reset_postdata();
+	} else {
+		$contact_page_id = $contact_page->ID;
+	}
+
+	if ( empty( $contact_page_id ) ) {
+		return $defaults;
+	}
+
+	$phone    = get_field( 'phone', $contact_page_id );
+	$email    = get_field( 'email', $contact_page_id );
+	$worktime = get_field( 'worktime', $contact_page_id );
+	$address  = get_field( 'address', $contact_page_id );
+	$map_url  = get_field( 'map_url', $contact_page_id );
+
+	return array(
+		'phone'    => ! empty( $phone ) ? $phone : $defaults['phone'],
+		'email'    => ! empty( $email ) ? $email : $defaults['email'],
+		'worktime' => ! empty( $worktime ) ? $worktime : $defaults['worktime'],
+		'address'  => ! empty( $address ) ? $address : $defaults['address'],
+		'map_url'  => ! empty( $map_url ) ? $map_url : $defaults['map_url'],
+	);
+}
+

@@ -1,4 +1,5 @@
 <?php
+$footer_contacts    = motorcycle_shop_get_contacts( 'footer' );
 $footer_home_url     = home_url( '/' );
 $footer_catalog_url  = motorcycle_shop_page_url( 'catalog.php', 'catalog' );
 $footer_about_url    = motorcycle_shop_page_url( 'about.php', 'about' );
@@ -82,22 +83,22 @@ $footer_category_links = motorcycle_shop_footer_category_links();
 					<div class="space-y-4">
 						<div>
 							<p class="text-white text-sm mb-1">Телефон</p>
-							<a href="tel:+375293070603" class="text-white text-base font-medium hover:text-[#FF6B00] transition-colors">+375 29 307 06 03</a>
+							<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $footer_contacts['phone'] ) ); ?>" class="text-white text-base font-medium hover:text-[#FF6B00] transition-colors"><?php echo esc_html( $footer_contacts['phone'] ); ?></a>
 						</div>
 
 						<div>
 							<p class="text-white text-sm mb-1">Email:</p>
-							<a href="mailto:motolavkaby@yandex.by" class="text-white text-base hover:text-[#FF6B00] transition-colors">motolavkaby@yandex.by</a>
+							<a href="mailto:<?php echo esc_attr( $footer_contacts['email'] ); ?>" class="text-white text-base hover:text-[#FF6B00] transition-colors"><?php echo esc_html( $footer_contacts['email'] ); ?></a>
 						</div>
 
 						<div>
 							<p class="text-white text-sm mb-1">Адрес:</p>
-							<p class="text-white text-base">г. Минск, ул. Глаголева 45, к.1</p>
+							<p class="text-white text-base"><?php echo esc_html( $footer_contacts['address'] ); ?></p>
 						</div>
 
 						<div>
 							<p class="text-white text-sm mb-1">Режим работы:</p>
-							<p class="text-white text-base font-medium">Пн-Пт с 9:00 до 19:00</p>
+							<p class="text-white text-base font-medium"><?php echo esc_html( $footer_contacts['worktime'] ); ?></p>
 						</div>
 					</div>
 				</div>
@@ -136,30 +137,30 @@ $footer_category_links = motorcycle_shop_footer_category_links();
 						</nav>
 					</div>
 				</div>
-				<div>
-					<h3 class="text-white text-lg font-bold mb-3">Контакты</h3>
-					<div class="space-y-3">
-						<div>
-							<p class="text-gray-400 text-sm mb-1">Телефон</p>
-							<a href="tel:+375293070603" class="text-white text-base font-medium hover:text-[#FF6B00] transition-colors">+375 29 307 06 03</a>
-						</div>
+			<div>
+				<h3 class="text-white text-lg font-bold mb-3">Контакты</h3>
+				<div class="space-y-3">
+					<div>
+						<p class="text-gray-400 text-sm mb-1">Телефон</p>
+						<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $footer_contacts['phone'] ) ); ?>" class="text-white text-base font-medium hover:text-[#FF6B00] transition-colors"><?php echo esc_html( $footer_contacts['phone'] ); ?></a>
+					</div>
 
-						<div>
-							<p class="text-gray-400 text-sm mb-1">Email:</p>
-							<a href="mailto:motolavkaby@yandex.by" class="text-white text-base hover:text-[#FF6B00] transition-colors">motolavkaby@yandex.by</a>
-						</div>
+					<div>
+						<p class="text-gray-400 text-sm mb-1">Email:</p>
+						<a href="mailto:<?php echo esc_attr( $footer_contacts['email'] ); ?>" class="text-white text-base hover:text-[#FF6B00] transition-colors"><?php echo esc_html( $footer_contacts['email'] ); ?></a>
+					</div>
 
-						<div>
-							<p class="text-gray-400 text-sm mb-1">Адрес:</p>
-							<p class="text-white text-base">г. Минск, ул. Глаголева 45 к.1</p>
-						</div>
+					<div>
+						<p class="text-gray-400 text-sm mb-1">Адрес:</p>
+						<p class="text-white text-base"><?php echo esc_html( $footer_contacts['address'] ); ?></p>
+					</div>
 
-						<div>
-							<p class="text-gray-400 text-sm mb-1">Режим работы:</p>
-							<p class="text-white text-base font-medium">Пн-Пт с 9:00 до 19:00</p>
-						</div>
+					<div>
+						<p class="text-gray-400 text-sm mb-1">Режим работы:</p>
+						<p class="text-white text-base font-medium"><?php echo esc_html( $footer_contacts['worktime'] ); ?></p>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 
