@@ -58,16 +58,16 @@ do_action( 'woocommerce_before_single_product' );
 
 	<section class="w-full fluid-px pb-10 md:pb-14 relative z-10">
 		<div class="max-w-[1200px] mx-auto">
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 lg:pt-[72px]">
 				<?php get_template_part( 'template-parts/woocommerce/single-product/gallery' ); ?>
 				<?php get_template_part( 'template-parts/woocommerce/single-product/summary' ); ?>
 			</div>
 		</div>
 	</section>
 
-	<section class="w-full fluid-px pb-12 md:pb-16 relative z-10">
+	<section class="w-full fluid-px pb-12 md:pb-16 lg:mt-14 relative z-10">
 		<div class="max-w-[1200px] mx-auto">
-			<div class="grid grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_360px] gap-8 lg:gap-10">
+			<div class="flex flex-col lg:flex-row gap-4">
 				<?php get_template_part( 'template-parts/woocommerce/single-product/details' ); ?>
 				<?php get_template_part( 'template-parts/woocommerce/single-product/sidebar-cards' ); ?>
 			</div>

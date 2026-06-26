@@ -13,7 +13,7 @@ $description = $product->get_short_description();
 $attr_rows   = motorcycle_shop_get_product_attribute_rows( $product );
 ?>
 
-<div class="flex md:max-w-[692px] flex-col gap-10 md:gap-12 min-w-0">
+<div class="flex md:max-w-[692px] flex-col gap-10 md:gap-8 min-w-0">
 	<?php if ( $description ) : ?>
 		<div>
 			<h2 class="text-white text-[22px] md:text-[32px] font-normal mb-4 md:mb-6">Описание</h2>
@@ -27,14 +27,14 @@ $attr_rows   = motorcycle_shop_get_product_attribute_rows( $product );
 		<div>
 			<h2 class="text-white text-[22px] md:text-[32px] font-normal mb-4 md:mb-6">Характеристики</h2>
 			<div class="overflow-x-auto -mx-[10px] fluid-px md:mx-0">
-				<table class="w-full min-w-[480px] border-collapse text-left text-sm md:text-base">
+				<table class="w-full min-w-[480px] border-[1px] border-[#434C58] text-left text-sm md:text-base">
 					<tbody>
 						<?php foreach ( $attr_rows as $index => $row ) : ?>
 							<tr class="<?php echo 0 === $index % 2 ? 'bg-[#2A3038]' : 'bg-[#232830]'; ?>">
-								<th scope="row" class="text-[#B8C0CC] font-normal px-4 md:px-5 py-3 md:py-4 w-[45%] align-top">
+								<th scope="row" class="text-[#B8C0CC] text-[14px] font-plex font-semibold font-px-4 md:px-5 py-3 md:py-3 w-[40%] align-top">
 									<?php echo esc_html( $row['label'] ); ?>
 								</th>
-								<td class="text-white font-medium px-4 md:px-5 py-3 md:py-4 align-top">
+								<td class="text-white px-4 text-[14px] font-plex font-semibold md:px-5 py-3 md:py-4 align-top">
 									<?php echo esc_html( $row['value'] ); ?>
 								</td>
 							</tr>

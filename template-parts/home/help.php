@@ -12,10 +12,10 @@
       </p>
     </div>
     <div class='flex flex-1 flex-col gap-[20px]'>
-      <div class='flex items-start bg-[#2A3038]/80 p-[10px] md:px-[37px] md:py-[40px] w-full gap-[20px] md:gap-[50px]'>
+      <div class='flex items-start bg-[#2A3038]/80 p-[10px] md:px-[37px] md:py-[40px] w-full gap-[20px] md:gap-[50px] border-[1px] border-[#434C58]'>
         <img src="<?php the_field('support-pay_icon') ?>" alt='wallet' class='md:max-w-[60px] max-w-[30px] md:max-h-[52px] w-full' />
         <div class='w-full'>
-          <h3 class='text-white text-3xl'>
+          <h3 class='text-white text-[24px] md:text-3xl'>
             <?php the_field('support-pay_heading') ?>
           </h3>
           <div class='bg-[#434C58] my-[10px] md:my-[20px] h-[1px]'></div>
@@ -25,10 +25,10 @@
         </div>
       </div>
       <div class='flex flex-1'>
-        <div class='flex items-start bg-[#2A3038]/80 p-[10px] md:px-[37px] md:py-[40px] w-full gap-[20px] md:gap-[50px]'>
+        <div class='flex items-start bg-[#2A3038]/80 p-[10px] md:px-[37px] md:py-[40px] w-full gap-[20px] md:gap-[50px] border-[1px] border-[#434C58]'>
           <img src="<?php the_field('support-delivery_icon') ?>" alt='track' class='max-w-[35px] md:max-w-[70px] max-h-[52px] w-full' />
           <div class='w-full'>
-            <h3 class='text-white text-3xl'>
+            <h3 class='text-white text-[24px] md:text-3xl'>
               <?php the_field('support-delivery_heading') ?>
             </h3>
             <div class='bg-[#434C58] my-[10px] md:my-[20px] h-[1px]'></div>

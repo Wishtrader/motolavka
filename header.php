@@ -30,9 +30,14 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 	h5, h6, p, span, a, label, input, button {
 		font-family: 'IBM Plex Sans', sans-serif;
 	}
-	html, body {
+	html {
 		overflow-x: hidden;
 		max-width: 100vw;
+	}
+	body.menu-open {
+		overflow: hidden;
+		position: fixed;
+		width: 100%;
 	}
 </style>
 
@@ -46,11 +51,11 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 <body class="bg-[#171A1F]">
 	<header class="absolute flex flex-col w-full top-0 z-50 bg-[url('<?php echo get_template_directory_uri(); ?>/img/header-bg.png')] bg-cover bg-center pb-[40px]">
 		<!-- Top Bar -->
-		<div class="hidden md:flex text-white text-sm my-[20px]">
-			<div class="max-w-[1200px] h-[42px] mx-auto flex items-center justify-center gap-6 fluid-px">
+		<div class="hidden md:flex text-white text-sm my-[20px] lg:my-2 lg:mb-8">
+			<div class="max-w-[1200px] h-[42px] mx-auto flex items-center justify-between fluid-px lg:w-[590px]">
 				<span class="hidden sm:inline"><?php echo esc_html( $header_contacts['worktime'] ); ?></span>
 				<div class="hidden sm:block h-[42px] w-[1px] bg-[#B8C0CC]"></div>
-				<span>Доставка по Беларуси</span>
+				<span class="">Доставка по Беларуси</span>
 				<div class="hidden sm:block h-[42px] w-[1px] bg-[#B8C0CC]"></div>
 				<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $header_contacts['phone'] ) ); ?>" class="hover:text-[#FB8A3C]"><?php echo esc_html( $header_contacts['phone'] ); ?></a>
 			</div>
@@ -59,7 +64,7 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 		<!-- Main Header -->
 		<div>
 			<div class="max-w-[1200px] mx-auto fluid-px">
-				<div class="hidden lg:flex items-center h-[60px] gap-8">
+				<div class="hidden lg:flex items-center h-[60px] gap-9">
 					<!-- Logo -->
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="flex-shrink-0">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="МОТОЛАВКА" class="fluid-logo w-auto">
@@ -76,11 +81,11 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 					</div>
 					
 					<!-- Navigation -->
-					<nav class="flex items-center gap-6 flex-1">
-						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="text-white text-sm hover:text-[#FB8A3C] transition-colors">О компании</a>
-						<a href="<?php echo esc_url( home_url( '/shipping-and-payment' ) ); ?>" class="text-white text-sm hover:text-[#FB8A3C] transition-colors">Доставка и Оплата</a>
-						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="text-white text-sm hover:text-[#FB8A3C] transition-colors">Сервис</a>
-						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="text-white text-sm hover:text-[#FB8A3C] transition-colors">Контакты</a>
+					<nav class="flex items-center gap-8 flex-1">
+						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="<?php echo is_page('about') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors">О компании</a>
+						<a href="<?php echo esc_url( home_url( '/shipping-and-payment' ) ); ?>" class="<?php echo is_page('shipping-and-payment') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors">Доставка и Оплата</a>
+						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="<?php echo is_page_template('service.php') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors">Сервис</a>
+						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="<?php echo is_page('contact') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors">Контакты</a>
 					</nav>
 					
 					<!-- Cart -->
@@ -141,8 +146,8 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="block <?php echo is_page('catalog') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Каталог</a>
 						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="block <?php echo is_page('about') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">О компании</a>
 						<a href="<?php echo esc_url( home_url( '/shipping-and-payment' ) ); ?>" class="block <?php echo is_page('shipping-and-payment') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Доставка и Оплата</a>
-						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="block text-white text-lg">Сервис</a>
-						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="block text-white text-lg">Контакты</a>
+						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="block <?php echo is_page_template('service.php') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Сервис</a>
+						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="block <?php echo is_page('contact') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Контакты</a>
 					</nav>
 					
 					<!-- Contacts Section -->
@@ -182,25 +187,27 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 			const menuClose = document.getElementById('mobile-menu-close');
 			const menuOverlay = document.getElementById('mobile-menu-overlay');
 			
+			function openMenu() {
+				menuOverlay.classList.remove('hidden');
+				document.body.classList.add('menu-open');
+			}
+			function closeMenu() {
+				menuOverlay.classList.add('hidden');
+				document.body.classList.remove('menu-open');
+			}
+
 			if (menuToggle && menuOverlay) {
-				menuToggle.addEventListener('click', function() {
-					menuOverlay.classList.remove('hidden');
-					document.body.style.overflow = 'hidden';
-				});
+				menuToggle.addEventListener('click', openMenu);
 			}
 			
 			if (menuClose && menuOverlay) {
-				menuClose.addEventListener('click', function() {
-					menuOverlay.classList.add('hidden');
-					document.body.style.overflow = '';
-				});
+				menuClose.addEventListener('click', closeMenu);
 			}
 			
 			if (menuOverlay) {
 				menuOverlay.addEventListener('click', function(e) {
 					if (e.target === menuOverlay) {
-						menuOverlay.classList.add('hidden');
-						document.body.style.overflow = '';
+						closeMenu();
 					}
 				});
 			}

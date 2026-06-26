@@ -16,10 +16,10 @@ get_header();
 		<div class="relative w-full max-w-[1200px] mx-auto mt-[140px] 2xl:mt-0 fluid-px">
 			<div class="hidden md:flex items-center gap-[20px]">
 				<div class="flex-1">
-					<h1 class="text-white sm:text-[34px] md:text-[52px] font-bold mb-[30px] leading-[1.1]">
+					<h1 class="text-white sm:text-[34px] md:text-[52px] font-bold mb-[30px] leading-[1.1] tracking-tight">
 						<?php the_field('hero_heading') ?>	
 					</h1>
-					<p class="text-white text-[20px] mb-8 leading-relaxed">
+					<p class="text-white text-[20px] mb-8 leading-[1.1]">
 						<?php the_field('hero_subtitle') ?>
 					</p>
 					<div class="flex gap-[20px] w-full">
@@ -62,19 +62,19 @@ get_header();
 				<?php endif; ?>
 			</div>
 
-			<div class="md:hidden h-full px-[10px] mt-[40px] relative">
+			<div class="md:hidden h-full mt-[40px] relative">
 				<div class="relative">
-					<h1 class="text-white text-[34px] font-bold mb-6 leading-tight">
+					<h1 class="text-white text-[34px] font-bold mb-6 leading-tight tracking-tight">
 						Подберите технику<br>и запчасти под<br>свои задачи
 					</h1>
 					<p class="text-gray-300 text-[20px] mb-8 leading-relaxed">
 						Каталог мотоциклов, квадрациклов, скутеров, запчастей и аксессуаров
 					</p>
 					<div class="space-y-5 mb-10">
-						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="block bg-[#FF6B00] text-white text-center px-8 py-4 rounded font-medium hover:bg-[#E55A00] transition-colors">
+						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="block bg-[#FF6B00] text-white text-center px-8 py-4 rounded-[2px] font-medium hover:bg-[#E55A00] transition-colors">
 							Смотреть каталог
 						</a>
-						<button type="button" data-lead-modal-open data-lead-source="hero" class="block w-full bg-[#2C2C2C] text-white text-center px-8 py-4 rounded font-medium hover:bg-[#3C3C3C] transition-colors">
+						<button type="button" data-lead-modal-open data-lead-source="hero" class="block w-full bg-[#2C2C2C] text-white text-center px-8 py-4 rounded-[2px] font-medium hover:bg-[#3C3C3C] transition-colors border-[#434C58] border-[1px]">
 							Оставить заявку
 						</button>
 					</div>
@@ -95,8 +95,8 @@ get_header();
 						$thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true );
 						$image_url    = $thumbnail_id ? wp_get_attachment_url( $thumbnail_id ) : get_template_directory_uri() . '/img/placeholder.png';
 						?>
-					<a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="group relative overflow-hidden rounded-lg block">
-						<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $cat->name ); ?>" class="w-full h-[200px] object-cover transition-transform duration-300 group-hover:scale-110">
+					<a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="group relative overflow-hidden block">
+						<img src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( $cat->name ); ?>" class="w-full h-[210px] object-cover transition-transform duration-300 group-hover:scale-110">
 						<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 						<div class="absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between">
 							<span class="text-white text-base font-medium"><?php echo esc_html( $cat->name ); ?></span>

@@ -15,7 +15,7 @@ $intro_text = $product->get_description();
 $credit_url = home_url( '/#credit' );
 ?>
 
-<div class="flex flex-col text-white gap-[16px]">
+<div class="flex flex-col text-white gap-[10px]">
 	<h1 class="fluid-h1 font-bold leading-tight mb-4">
 		<?php echo esc_html( $product->get_name() ); ?>
 	</h1>
@@ -37,10 +37,10 @@ $credit_url = home_url( '/#credit' );
 		</div>
 	<?php endif; ?>
 
-	<p class="text-white font-semibold text-lg leading-[1.5] mb-4">Ключевые характеристики:</p>
+	<p class="text-white font-semibold text-lg leading-[1.5] mb-2">Ключевые характеристики:</p>
 
 	<?php if ( ! empty( $highlights ) ) : ?>
-		<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+		<div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
 			<?php foreach ( $highlights as $item ) : ?>
 				<div class="flex items-center gap-3">
 					<div class="min-w-0 flex justify-between w-full md:min-w-[212px]">

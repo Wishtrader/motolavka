@@ -39,11 +39,11 @@ $cart_action = function_exists( 'motorcycle_shop_cart_page_url' )
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	<div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-		<div class="flex items-stretch h-[52px] shrink-0">
+		<div class="flex items-stretch h-[52px] w-[183px] shrink-0">
 			<button
 				type="button"
 				data-qty-minus
-				class="w-12 bg-[#2A3038] border border-[#434C58] text-white text-xl hover:bg-[#1F242B] transition-colors rounded-l-[2px]"
+				class="w-16 bg-[#2A3038]/60 text-white text-3xl font-plex hover:bg-[#1F242B] transition-colors rounded-l-[2px]"
 				aria-label="<?php esc_attr_e( 'Уменьшить количество', 'motorcycle-shop' ); ?>"
 			>−</button>
 			<label class="sr-only" for="quantity_<?php echo esc_attr( $product->get_id() ); ?>"><?php esc_html_e( 'Количество', 'motorcycle-shop' ); ?></label>
@@ -51,7 +51,7 @@ $cart_action = function_exists( 'motorcycle_shop_cart_page_url' )
 				type="number"
 				id="quantity_<?php echo esc_attr( $product->get_id() ); ?>"
 				data-qty-input
-				class="w-14 sm:w-16 bg-[#2A3038] border-y border-[#434C58] text-white text-center text-base font-semibold focus:outline-none focus:ring-2 focus:ring-[#FF6B00] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+				class="w-16 sm:w-16 bg-[#2A3038]/60 text-white font-plex text-center text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-[#FF6B00] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
 				name="quantity"
 				value="<?php echo esc_attr( $min_qty ); ?>"
 				min="<?php echo esc_attr( $min_qty ); ?>"
@@ -62,7 +62,7 @@ $cart_action = function_exists( 'motorcycle_shop_cart_page_url' )
 			<button
 				type="button"
 				data-qty-plus
-				class="w-12 bg-[#2A3038] border border-[#434C58] text-white text-xl hover:bg-[#1F242B] transition-colors rounded-r-[2px]"
+				class="w-16 bg-[#2A3038]/60 text-white text-3xl font-plex hover:bg-[#1F242B] transition-colors rounded-r-[2px]"
 				aria-label="<?php esc_attr_e( 'Увеличить количество', 'motorcycle-shop' ); ?>"
 			>+</button>
 		</div>

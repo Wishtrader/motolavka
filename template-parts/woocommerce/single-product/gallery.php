@@ -26,7 +26,7 @@ if ( $thumb_count > 0 ) {
 <style>
 	.product-gallery [data-gallery-thumb] {
 		box-sizing: border-box;
-		border: 2px solid transparent;
+		border: 3px solid transparent;
 		transition: border-color 0.2s ease;
 	}
 	.product-gallery [data-gallery-thumb].is-active {
@@ -94,7 +94,7 @@ if ( $thumb_count > 0 ) {
 			data-gallery-main
 			src="<?php echo esc_url( $main_url ); ?>"
 			alt="<?php echo esc_attr( $product->get_name() ); ?>"
-			class="w-full aspect-[4/3] lg:aspect-[16/11] object-cover"
+			class="w-full aspect-[4/3] lg:aspect-[16/9.5] object-cover"
 			decoding="async"
 		/>
 	</div>
@@ -132,7 +132,7 @@ if ( $thumb_count > 0 ) {
 							data-gallery-thumb
 							data-full-url="<?php echo esc_url( $full_url ); ?>"
 							onclick="return motorcycleShopSwitchProductImage(this);"
-							class="shrink-0 w-[80px] h-[60px] md:w-[100px] md:h-[75px] rounded-[2px] overflow-hidden flex items-center justify-center <?php echo $is_first ? 'is-active' : ''; ?> focus:outline-none focus:ring-2 focus:ring-[#FF6B00] cursor-pointer p-0 bg-transparent"
+							class="shrink-0 w-[80px] h-[60px] md:w-[100px] md:h-[75px] rounded-[8px] overflow-hidden flex items-center justify-center <?php echo $is_first ? 'is-active' : ''; ?> focus:outline-none focus:ring-2 focus:ring-[#FF6B00] cursor-pointer p-0 bg-transparent"
 							style="border: 2px solid <?php echo esc_attr( $border ); ?>;"
 							aria-label="<?php echo esc_attr( sprintf( __( 'Изображение %d', 'motorcycle-shop' ), $index + 1 ) ); ?>"
 							aria-pressed="<?php echo $is_first ? 'true' : 'false'; ?>"

@@ -8,20 +8,20 @@
     </p>
     <div class="flex flex-col w-full justify-between items-start lg:flex-row">
       <div class='flex flex-col max-w-[590px] gap-[20px] mt-[30px] w-full'>
-        <div class='flex items-center w-full bg-[#2A3038] px-[20px] py-[27px] gap-[20px]'>
+        <div class='flex items-center w-full bg-[#2A3038] md:px-[20px] px-[10px] py-[27px] gap-[20px]'>
           <div class='h-[13px] w-[13px] bg-[#D95F0E] rounded-[13px]'></div>
-          <p class='text-white text-lg font-semibold'><?php the_field('bullet_1') ?></p>
+          <p class='text-white text-base font-regular'><?php the_field('bullet_1') ?></p>
         </div>
 
-        <div class='flex items-center w-full bg-[#2A3038] px-[20px] py-[27px] gap-[20px]'>
+        <div class='flex items-center w-full bg-[#2A3038] md:px-[20px] px-[10px] py-[27px] gap-[20px]'>
           <div class='h-[13px] w-[13px] bg-[#D95F0E] rounded-[13px]'></div>
-          <p class='text-white text-lg font-semibold'><?php the_field('bullet_2') ?></p>
+          <p class='text-white text-base font-regular'><?php the_field('bullet_2') ?></p>
         </div>
 
 
-        <div class='flex items-center w-full bg-[#2A3038] px-[20px] py-[27px] gap-[20px]'>
+        <div class='flex items-center w-full bg-[#2A3038] md:px-[20px] px-[10px] py-[27px] gap-[20px]'>
           <div class='h-[13px] w-[13px] bg-[#D95F0E] rounded-[13px]'></div>
-          <p class='text-white text-lg font-semibold'><?php the_field('bullet_3') ?></p>
+          <p class='text-white text-base font-regular leading-[1.2]'><?php the_field('bullet_3') ?></p>
         </div>
 
         <?php
@@ -34,9 +34,9 @@
         );
         ?>
       </div>
-      <div class="flex flex-col w-full max-w-[387px] md:px-[73px] p-[40px] bg-[#2A3038] lg:-mt-[80px] mt-[20px]">
-        <img src="<?php the_field('credit_icon') ?>" alt="credit" class="max-w-[72px] mb-[30px]" />
-        <h4 class="text-white text-xl font-semibold mb-[30px]"><?php the_field('credit_heading2') ?></h4>
+      <div class="flex flex-col w-full max-w-[387px] md:px-[73px] md:p-[40px] p-[10px] bg-[#2A3038] lg:-mt-[80px] mt-[20px]">
+        <img src="<?php the_field('credit_icon') ?>" alt="credit" class="max-w-[47px] md:max-w-[73px] mb-[20px] md:mb-[30px]" />
+        <h4 class="text-white text-xl font-semibold md:mb-[30px] mb-[10px]"><?php the_field('credit_heading2') ?></h4>
         <p class="text-white text-base font-normal"><?php the_field('credit_description2') ?></p>
       </div>
     </div>

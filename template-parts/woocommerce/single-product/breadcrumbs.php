@@ -19,7 +19,7 @@ $last_index  = count( $breadcrumbs ) - 1;
 
 <div class="w-full fluid-px fluid-pt-page pb-6 md:pb-8 relative z-10">
 	<div class="max-w-[1200px] mx-auto">
-		<nav class="flex flex-wrap items-center gap-2 text-sm mt-10" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
+		<nav class="flex flex-wrap items-center gap-4 text-sm mt-10 lg:mt-[75px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
 			<?php foreach ( $breadcrumbs as $index => $crumb ) : ?>
 				<?php if ( $index > 0 ) : ?>
 					<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
