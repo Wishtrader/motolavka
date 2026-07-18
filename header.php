@@ -43,7 +43,17 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 
 	<?php wp_head(); ?>
 	<style>
-		.nav-link-active { color: #FB8A3C !important; }
+		.nav-link-active { color: #FB8A3C !important; position: relative; }
+		.nav-link-active::after {
+			content: '';
+			position: absolute;
+			bottom: -2px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: #FB8A3C;
+			border-radius: 1px;
+		}
 		.nav-btn-active { background-color: #FB8A3C !important; }
 	</style>
 </head>
@@ -82,10 +92,10 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 					
 					<!-- Navigation -->
 					<nav class="flex items-center gap-8 flex-1">
-						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="<?php echo is_page('about') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors">О компании</a>
-						<a href="<?php echo esc_url( home_url( '/shipping-and-payment' ) ); ?>" class="<?php echo is_page('shipping-and-payment') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors">Доставка и Оплата</a>
-						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="<?php echo is_page_template('service.php') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors">Сервис</a>
-						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="<?php echo is_page('contact') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors">Контакты</a>
+						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="<?php echo is_page('about') ? 'nav-link-active' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors relative">О компании</a>
+						<a href="<?php echo esc_url( home_url( '/shipping-and-payment' ) ); ?>" class="<?php echo is_page('shipping-and-payment') ? 'nav-link-active' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors relative">Доставка и Оплата</a>
+						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="<?php echo is_page_template('service.php') ? 'nav-link-active' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors relative">Сервис</a>
+						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="<?php echo is_page('contact') ? 'nav-link-active' : 'text-white'; ?> text-sm hover:text-[#FB8A3C] transition-colors relative">Контакты</a>
 					</nav>
 					
 					<!-- Cart -->
@@ -143,11 +153,11 @@ $header_contacts = motorcycle_shop_get_contacts( 'header' );
 					
 					<!-- Menu Links -->
 					<nav class="space-y-4 mb-8">
-						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="block <?php echo is_page('catalog') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Каталог</a>
-						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="block <?php echo is_page('about') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">О компании</a>
-						<a href="<?php echo esc_url( home_url( '/shipping-and-payment' ) ); ?>" class="block <?php echo is_page('shipping-and-payment') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Доставка и Оплата</a>
-						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="block <?php echo is_page_template('service.php') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Сервис</a>
-						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="block <?php echo is_page('contact') ? 'text-[#FB8A3C]' : 'text-white'; ?> text-lg">Контакты</a>
+						<a href="<?php echo esc_url( home_url( '/catalog' ) ); ?>" class="block <?php echo is_page('catalog') ? 'nav-link-active' : 'text-white'; ?> text-lg">Каталог</a>
+						<a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="block <?php echo is_page('about') ? 'nav-link-active' : 'text-white'; ?> text-lg">О компании</a>
+						<a href="<?php echo esc_url( home_url( '/shipping-and-payment' ) ); ?>" class="block <?php echo is_page('shipping-and-payment') ? 'nav-link-active' : 'text-white'; ?> text-lg">Доставка и Оплата</a>
+						<a href="<?php echo esc_url( home_url( '/service' ) ); ?>" class="block <?php echo is_page_template('service.php') ? 'nav-link-active' : 'text-white'; ?> text-lg">Сервис</a>
+						<a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="block <?php echo is_page('contact') ? 'nav-link-active' : 'text-white'; ?> text-lg">Контакты</a>
 					</nav>
 					
 					<!-- Contacts Section -->
