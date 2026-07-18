@@ -13,9 +13,9 @@
 
     <div class="flex md:grid overflow-x-auto md:overflow-visible snap-x snap-mandatory gap-5 mt-[40px] mb-[40px] md:grid-cols-4">
     <div class="proces-item snap-start flex flex-col gap-[10px]">
-      <div class="flex">
-        <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4">01</h1>
-        <img class="lg:block max-w-[180px] md:max-w-[220px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
+      <div class="flex items-center">
+        <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4 shrink-0">01</h1>
+        <img class="lg:block flex-1 min-w-0 w-full h-auto max-w-[180px] md:max-w-[220px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
       </div>
       <p class="text-lg font-semibold text-white">
 				<?php the_field('about-step1_heading') ?>
@@ -27,9 +27,9 @@
     </div>
 
       <div class="proces-item snap-start flex flex-col gap-[10px]">
-        <div class="flex">
-          <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4">02</h1>
-          <img class="lg:block max-w-[180px] md:max-w-[210px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
+        <div class="flex items-center">
+          <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4 shrink-0">02</h1>
+          <img class="lg:block flex-1 min-w-0 w-full h-auto max-w-[180px] md:max-w-[210px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
         </div>
         <p class="text-lg font-semibold text-white">
 					<?php the_field('about-step2_heading') ?>
@@ -41,9 +41,9 @@
       </div>
 
       <div class="proces-item snap-start flex flex-col gap-[10px]">
-        <div class="flex">
-          <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4">03</h1>
-          <img class="lg:block max-w-[180px] md:max-w-[200px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
+        <div class="flex items-center">
+          <h1 class="text-[52px] text-[#D95F0E]/30 font-bold mr-4 shrink-0">03</h1>
+          <img class="lg:block flex-1 min-w-0 w-full h-auto max-w-[180px] md:max-w-[200px]" src="<?php echo get_template_directory_uri(); ?>/img/line.svg" alt="line" />
         </div>
         <p class="text-lg font-semibold text-white">
 					<?php the_field('about-step3_heading') ?>
