@@ -13,10 +13,10 @@ do_action( 'woocommerce_cart_is_empty' );
 
 <div class="w-full fluid-px pt-[110px] md:pt-[130px] pb-16">
 	<div class="max-w-[1200px] mx-auto">
-		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6 md:mt-[35px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
+		<nav class="flex items-center gap-2 text-[13px] mb-[60px] mt-[80px] md:mt-[50px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors lg:mr-3">Главная</a>
 			<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
-			<span class="text-white">Корзина</span>
+			<span class="text-white lg:ml-2">Корзина</span>
 		</nav>
 
 		<h1 class="text-white text-[32px] md:text-[40px] font-bold mb-8">Корзина</h1>

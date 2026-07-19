@@ -8,12 +8,12 @@
 
 get_header();
 ?>
-<div class="text-white w-full max-w-[1200px] mx-auto md:mt-[190px]">
+<div class="text-white w-full max-w-[1200px] mx-auto mt-[80px] md:mt-[50px]">
 <!-- Breadcrumb -->
-<nav class="flex items-center gap-2 text-sm">
-	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
+<nav class="flex items-center gap-2 text-[13px] mb-[60px]">
+	<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors lg:mr-3">Главная</a>
 		<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
-		<span class="text-white">Политика конфиденциальности</span>
+		<span class="text-white lg:ml-2">Политика конфиденциальности</span>
 </nav>
 </div>
 <?php

@@ -263,3 +263,86 @@ function motorcycle_shop_get_contacts( $context = '' ) {
 	);
 }
 
+/**
+ * Register ACF fields for the Contact page template.
+ *
+ * Adds a repeater "contact_cards" so contact cards can be managed from the
+ * admin, plus the existing hero image and map URL fields.
+ */
+function motorcycle_shop_register_contact_acf_fields() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	$contact_page = get_page_by_path( 'contact' );
+	$location_id = $contact_page ? $contact_page->ID : null;
+
+	acf_add_local_field_group( array(
+		'key'      => 'group_contact_page',
+		'title'    => 'Контакты — настройки страницы',
+		'fields'   => array(
+			array(
+				'key'   => 'field_contact_hero_img',
+				'label' => 'Фоновое изображение (Hero)',
+				'name'  => 'hero_img',
+				'type'  => 'image',
+				'return_format' => 'url',
+			),
+			array(
+				'key'   => 'field_contact_map_url',
+				'label' => 'Ссылка на карту (iframe)',
+				'name'  => 'map_url',
+				'type'  => 'url',
+			),
+			array(
+				'key'          => 'field_contact_cards',
+				'label'        => 'Карточки контактов',
+				'name'         => 'contact_cards',
+				'type'         => 'repeater',
+				'layout'       => 'table',
+				'button_label' => 'Добавить карточку',
+				'sub_fields'   => array(
+					array(
+						'key'           => 'field_contact_card_icon',
+						'label'         => 'Иконка',
+						'name'          => 'icon',
+						'type'          => 'image',
+						'return_format' => 'url',
+						'required'      => 1,
+					),
+					array(
+						'key'   => 'field_contact_card_title',
+						'label' => 'Заголовок',
+						'name'  => 'title',
+						'type'  => 'text',
+						'required' => 1,
+					),
+					array(
+						'key'   => 'field_contact_card_value',
+						'label' => 'Значение',
+						'name'  => 'value',
+						'type'  => 'text',
+						'required' => 1,
+					),
+					array(
+						'key'   => 'field_contact_card_link',
+						'label' => 'Ссылка (необязательно, напр. tel:/mailto:)',
+						'name'  => 'link',
+						'type'  => 'text',
+					),
+				),
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param'    => 'page_template',
+					'operator' => '==',
+					'value'    => 'contact.php',
+				),
+			),
+		),
+	) );
+}
+add_action( 'acf/init', 'motorcycle_shop_register_contact_acf_fields' );
+

@@ -13,12 +13,10 @@ $is_product_search = motorcycle_shop_is_product_search();
 
 <div class="w-full fluid-px fluid-pt-page pb-6 md:pb-8">
 	<div class="max-w-[1200px] mx-auto mt-12">
-		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
+		<nav class="flex items-center gap-2 text-[13px] mb-[60px] mt-[80px] md:mt-[50px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors lg:mr-3">Главная</a>
 			<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
-				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-			</svg>
-			<span class="text-white">Поиск</span>
+			<span class="text-white lg:ml-2">Поиск</span>
 		</nav>
 
 		<h1 class="text-white fluid-h2 font-bold leading-tight mb-4">

@@ -18,12 +18,12 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 <div class="w-full fluid-px pt-[110px] md:pt-[130px] pb-10 md:pb-14">
 	<div class="max-w-[1200px] mx-auto">
-		<nav class="flex flex-wrap items-center gap-2 text-sm mb-6 md:mt-[60px] md:mb-10" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
+		<nav class="flex items-center gap-2 text-[13px] mb-[60px] mt-[80px] md:mt-[50px]" aria-label="<?php esc_attr_e( 'Breadcrumb', 'motorcycle-shop' ); ?>">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors lg:mr-3">Главная</a>
 			<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
-			<a href="<?php echo esc_url( home_url( '/cart' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Корзина</a>
+			<a href="<?php echo esc_url( home_url( '/cart' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors lg:mr-3">Корзина</a>
 			<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
-			<span class="text-white">Оформление заказа</span>
+			<span class="text-white lg:ml-2">Оформление заказа</span>
 		</nav>
 
 		<h1 class="text-white text-[34px] md:text-[53px] font-bold leading-tight mb-8 md:mb-10">Оформление заказа</h1>

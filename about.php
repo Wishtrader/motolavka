@@ -16,10 +16,10 @@
 		<!-- Content -->
 		<div class="relative w-full max-w-[1200px] mx-auto 2xl:mt-0 fluid-px">
         <!-- Breadcrumb -->
-            <nav class="flex items-center gap-2 text-sm mb-[60px] mt-[80px]">
-                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors">Главная</a>
+            <nav class="flex items-center gap-2 text-[13px] mb-[60px] mt-[80px]">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors lg:mr-3">Главная</a>
                 <img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
-                <span class="text-white">О компании</span>
+                <span class="text-white lg:ml-2">О компании</span>
             </nav>  
 			<!-- Desktop Version -->
 			<div class="hidden md:grid grid-cols-2 items-center gap-[20px]">
