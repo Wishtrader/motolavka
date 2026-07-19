@@ -38,8 +38,8 @@ $cart_action = function_exists( 'motorcycle_shop_cart_page_url' )
 >
 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-	<div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
-		<div class="flex items-stretch h-[52px] w-[183px] shrink-0">
+	<div class="flex flex-row gap-3 sm:gap-4">
+		<div class="flex items-stretch h-[52px] flex-1 min-w-0">
 			<button
 				type="button"
 				data-qty-minus

@@ -4,36 +4,36 @@
       <?php the_field('sec3_heading') ?>
     </h2>
 		<div class="grid md:grid-cols-2 gap-[20px] mt-4">
-			<div class="bg-[#2A3038] p-4 md:p-6">
-				<div class="flex items-start gap-3 md:gap-4">
-					<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
+			<div class="bg-[#2A3038] p-2.5 py-6 md:p-6">
+				<div class="flex items-center gap-3 md:gap-4">
+					<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full"></div>
 					<p class="text-white fluid-body-sm leading-relaxed">
 						<?php the_field('sec3_bullet1') ?>
 					</p>
 				</div>
 			</div>
 
-			<div class="bg-[#2A3038] p-4 md:p-6">
-				<div class="flex items-start gap-3 md:gap-4">
-					<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
+			<div class="bg-[#2A3038] p-2.5 py-6 md:p-6">
+				<div class="flex items-center gap-3 md:gap-4">
+					<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full"></div>
 					<p class="text-white fluid-body-sm leading-relaxed">
 						<?php the_field('sec3_bullet2') ?>
 					</p>
 				</div>
 			</div>
 
-			<div class="bg-[#2A3038] p-4 md:p-6">
-				<div class="flex items-start gap-3 md:gap-4">
-					<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
+			<div class="bg-[#2A3038] p-2.5 py-6 md:p-6">
+				<div class="flex items-center gap-3 md:gap-4">
+					<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full"></div>
 					<p class="text-white fluid-body-sm leading-relaxed">
 						<?php the_field('sec3_bullet3') ?>
 					</p>
 				</div>
 			</div>
 
-			<div class="bg-[#2A3038] p-4 md:p-6">
-				<div class="flex items-start gap-3 md:gap-4">
-					<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full mt-2"></div>
+			<div class="bg-[#2A3038] p-2.5 py-6 md:p-6">
+				<div class="flex items-center gap-3 md:gap-4">
+					<div class="flex-shrink-0 w-3 h-3 bg-[#FF6B00] rounded-full"></div>
 					<p class="text-white fluid-body-sm leading-relaxed">
 						<?php the_field('sec3_bullet4') ?>
 					</p>
@@ -43,3 +43,4 @@
     
   </div>
 </section>
+

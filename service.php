@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Service
  * Template for Service page
@@ -9,7 +10,7 @@
 
 <!-- Hero Section -->
 <section class="relative overflow-hidden">
-	<div class="relative h-[494px]">
+	<div class="relative h-[227px] lg:h-[494px]">
 		<!-- Background Image -->
 		<div class="absolute inset-0 bg-[url('<?php the_field('service_bg') ?>')] bg-cover bg-right">
 		</div>
@@ -21,7 +22,9 @@
 				<div class="text-white w-full max-w-[680px]">
 					<!-- Breadcrumb -->
 					<nav class="flex items-center gap-2 text-[13px] mb-[60px] mt-[80px] md:mt-[50px]">
-						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors lg:mr-3">Главная</a>
+						<a href="<?php echo
+    						esc_url(home_url('/'))
+						; ?>" class="text-gray-400 hover:text-[#FB8A3C] transition-colors lg:mr-3">Главная</a>
 						<img src="<?php echo get_template_directory_uri() . '/img/arr.svg'; ?>" alt="arrow">
 						<span class="text-white lg:ml-2">Сервис</span>
 					</nav>
@@ -38,9 +41,9 @@
 	</div>
 </section>
 
-<?php get_template_part( 'template-parts/service/service', 'service' ); ?>
-<?php get_template_part( 'template-parts/service/why', 'why' ); ?>
-<?php get_template_part( 'template-parts/service/proces', 'proces' ); ?>
-<?php get_template_part( 'template-parts/service/form', 'form' ); ?>
+<?php get_template_part('template-parts/service/service', 'service'); ?>
+<?php get_template_part('template-parts/service/why', 'why'); ?>
+<?php get_template_part('template-parts/service/proces', 'proces'); ?>
+<?php get_template_part('template-parts/service/form', 'form'); ?>
 
-<?php get_footer(); ?>
+<?php get_footer();
